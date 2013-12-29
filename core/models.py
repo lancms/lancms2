@@ -13,6 +13,8 @@ class Event(models.Model):
 			("add", "Add"),
 			("change", "Change"),
 		)
+	def __unicode__(self):
+		return self.name
 
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
