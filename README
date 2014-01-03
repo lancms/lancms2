@@ -1,1 +1,3 @@
-Placeholder
+# Installing
+
+Run 'pip install -r requirements.txt'. This should preferably be done in a virtual environment (see virtualenv).
