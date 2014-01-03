@@ -5,8 +5,14 @@ from django.utils.translation import pgettext_lazy as _
 
 # Create your models here.
 
+class Organization(models.Model):
+	name = models.CharField(max_length=64)
+	urlname = models.CharField(max_length=8)
+
+
 class Event(models.Model):
 	name = models.CharField(max_length=64)
+	organization = models.ForeignKey(Organization)
 
 	class Meta:
 		permissions = (
