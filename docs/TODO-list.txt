@@ -1,0 +1,21 @@
+Basic URL design
+http://xxx/organization_friendly_name/event_friendly_name
+i.e. /globe/gl22/
+
+Main features that needs to be implemented:
+* Events
+* Admin
+* Ticket
+* Seatmap
+** Rooms created in organization, and reused in event
+* Wannabe
+* Crew/groups
+* SMS
+* Registration (with Facebook connect)
+* N4F-data
+* Onsite/arrival
+
+
+Features that should be implemted
+* Kiosk
+* Compo
