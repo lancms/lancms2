@@ -15,8 +15,8 @@ class TicketType(models.Model):
 		('onsite-withcomputer', 'Onsite: With computer'),
 		('prepaid', 'Prepaid'),
 		('preorder', 'Preorder'),
-		('special-crew', 'Crew'),
-		('special-invitation', 'Special invitation'),
+		('crew', 'Crew'),
+		('invitation', 'Special invitation'),
 	)
 	Type = models.CharField(max_length=15, choices=TypeChoice)
 #	Type = models.CharField(max_length=15)
