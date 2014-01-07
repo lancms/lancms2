@@ -1,3 +1,5 @@
+{% load socialaccount %}
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -27,6 +29,7 @@
 						</ul>
 						{% else %}
 						<ul class="nav navbar-nav pull-right">
+							<li><a href="{% provider_login_url 'facebook' method='oauth2' %}">Log in with Facebook</a></li>
 							<li><a href="{% url 'account_signup' %}">Sign up</a></li>
 							<li><a href="{% url 'account_login' %}">Log in</a></li>
 						</ul>
