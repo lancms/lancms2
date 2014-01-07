@@ -82,10 +82,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-##
+#####
 MEDIA_ROOT = os.path.join (BASE_DIR, 'media/')
 STATIC_ROOT = os.path.join (BASE_DIR, 'static/')
 TEMPLATE_DIRS = os.path.join (BASE_DIR, 'templates/')
+
+##### example on how to add to the default settings
+# import django.conf.global_settings as DEFAULT_SETTINGS
+# TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+# 'django.whatever...',
+# )
 
 
 ##### import settings from lancms2/local_settings.py
