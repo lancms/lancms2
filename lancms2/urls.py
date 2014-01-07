@@ -7,7 +7,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # allauth:
     url ('^accounts/', include ('allauth.urls')),
-        
+    url ('^$', 'core.views.index'),
         
     # Examples:
     # url(r'^lancms2/', include('lancms2.foo.urls')),
