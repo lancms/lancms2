@@ -2,8 +2,9 @@
 
 {% block content %}
 
-
-<table>
+<div class="row">
+<div class="col-md-4">
+<table class="table table-condensed">
 	<tr>
 		<td colspan="2">
 			{% if user.socialaccount_set.all.0.get_avatar_url %}
@@ -14,20 +15,42 @@
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<th>
 			Username
-		</td>
+		</th>
 		<td>
 			{{user.username}}
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<th>
 			Full name
-		</td>
+		</th>
 		<td>
 			{{user.get_full_name}}
 		</td>
 	</tr>
+	<tr>
+		<th>
+			Email
+		</th>
+		<td>
+			{{user.email}}
+		</td>	
+	</tr>
+	{% if user.is_staff or user.is_superuser %}
+	<tr>
+		<th>
+			Access
+		</th>
+		<td>
+			{% if user.is_staff %}<span class="label label-info">Staff</span>{% endif %}
+			{% if user.is_superuser %}<span class="label label-success">Superuser</span>{% endif %}
+		</td>
+	</tr>
+	{% endif %}
 </table>
+</div>
+</div>
+
 {% endblock %}
