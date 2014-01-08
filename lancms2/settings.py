@@ -107,12 +107,13 @@ SITE_ID = 1
 
 import django.conf.global_settings as DEFAULT_SETTINGS
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
-    'allauth.account.context_processors.account',
-    'allauth.socialaccount.context_processors.socialaccount',
-    )
+	'django.core.context_processors.request',
+	'allauth.account.context_processors.account',
+	'allauth.socialaccount.context_processors.socialaccount',
+	)
 AUTHENTICATION_BACKENDS = DEFAULT_SETTINGS.AUTHENTICATION_BACKENDS + (
-    'allauth.account.auth_backends.AuthenticationBackend',
-    )
+	'allauth.account.auth_backends.AuthenticationBackend',
+	)
 
 SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email'], 'AUTH_PARAMS': { 'auth_type': 'reauthenticate' }, 'METHOD': 'oauth2', 'LOCALE_FUNC': lambda request: 'en_GB' } }
 
@@ -121,7 +122,7 @@ SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email'], 'AUTH_PARAMS': { '
 
 ##### import settings from lancms2/local_settings.py
 try:
-    from local_settings import *
+	from local_settings import *
 except ImportError:
-    pass
+	pass
 
