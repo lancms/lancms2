@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<table>
+	<tr>
+		<td colspan="2">
+			{% if user.socialaccount_set.all.0.get_avatar_url %}
+			<img src="{{user.socialaccount_set.all.0.get_avatar_url}}">
+			{% else %}
+			<i class="fa fa-user" style="font-size: 300px;"></i>
+			{% endif %}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Username
+		</td>
+		<td>
+			{{user.username}}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Full name
+		</td>
+		<td>
+			{{user.get_full_name}}
+		</td>
+	</tr>
+</table>
+{% endblock %}
