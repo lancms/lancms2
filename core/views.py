@@ -1,9 +1,13 @@
-# Create your views here.
-from django.shortcuts import render
-from django.utils.translation import ugettext as _
+from core.common import prtr
+from django.contrib.auth.decorators import login_required
 
 
-def index(request):
+def index (request):
+    c = {}
+    return prtr ('index.html', c, request) 
+
+@login_required()
+def selfprofile (request):
 	c = {}
-	c['main'] = _('Hello world')
-	return render(request, "index.html", c)
+	return prtr ('account/profile.html', c, request)
+
