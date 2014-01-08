@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'core',
+	 'debug_toolbar', # for DEBUG
 )
 
 MIDDLEWARE_CLASSES = (
