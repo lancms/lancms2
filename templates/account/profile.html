@@ -38,6 +38,14 @@
 			{{user.email}}
 		</td>	
 	</tr>
+	<tr>
+		<th>
+			Registered
+		</th>
+		<td>
+			{{user.date_joined}}
+		</td>	
+	</tr>
 	{% if user.is_staff or user.is_superuser %}
 	<tr>
 		<th>
