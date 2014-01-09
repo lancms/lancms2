@@ -38,6 +38,16 @@
 			{{user.email}}
 		</td>	
 	</tr>
+	{% if user.userprofile.gender %}
+	<tr>
+		<th>
+			Gender
+		</th>
+		<td>
+			<i class="fa fa-{{user.userprofile.gender}}"></i> {{user.userprofile.get_gender_display}}
+		</td>	
+	</tr>
+	{% endif %}
 	<tr>
 		<th>
 			Registered
