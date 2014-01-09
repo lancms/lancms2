@@ -27,10 +27,12 @@ class UserProfile(models.Model):
 
 from django.dispatch import receiver
 from allauth.account.signals import user_signed_up
+import datetime
 @receiver(user_signed_up)
 def populate_user_profile (request, user, sociallogin=None, **kwargs):
 	if sociallogin:
 		if sociallogin.account.provider == 'facebook':
 			up = UserProfile(user=user)
 			up.gender = sociallogin.account.extra_data['gender']
+			up.date_of_birth = datetime.datetime.strptime (sociallogin.account.extra_data['birthday'], "%m/%d/%Y")
 			up.save()

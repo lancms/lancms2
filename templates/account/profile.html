@@ -38,6 +38,16 @@
 			{{user.email}}
 		</td>	
 	</tr>
+	{% if user.userprofile.date_of_birth %}
+	<tr>
+		<th>
+			Gender
+		</th>
+		<td>
+			{{user.userprofile.date_of_birth}}
+		</td>	
+	</tr>
+	{% endif %}
 	{% if user.userprofile.gender %}
 	<tr>
 		<th>
