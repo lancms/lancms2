@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
     'core',
 	 'debug_toolbar', # for DEBUG
+	 'django_countries',
 )
 
 MIDDLEWARE_CLASSES = (
