@@ -38,6 +38,34 @@
 			{{user.email}}
 		</td>	
 	</tr>
+	{% if user.userprofile.date_of_birth %}
+	<tr>
+		<th>
+			Gender
+		</th>
+		<td>
+			{{user.userprofile.date_of_birth}}
+		</td>	
+	</tr>
+	{% endif %}
+	{% if user.userprofile.gender %}
+	<tr>
+		<th>
+			Gender
+		</th>
+		<td>
+			<i class="fa fa-{{user.userprofile.gender}}"></i> {{user.userprofile.get_gender_display}}
+		</td>	
+	</tr>
+	{% endif %}
+	<tr>
+		<th>
+			Registered
+		</th>
+		<td>
+			{{user.date_joined}}
+		</td>	
+	</tr>
 	{% if user.is_staff or user.is_superuser %}
 	<tr>
 		<th>

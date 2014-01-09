@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
     'core',
 	 'debug_toolbar', # for DEBUG
+	 'django_countries',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -116,7 +117,7 @@ AUTHENTICATION_BACKENDS = DEFAULT_SETTINGS.AUTHENTICATION_BACKENDS + (
 	'allauth.account.auth_backends.AuthenticationBackend',
 	)
 
-SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email'], 'AUTH_PARAMS': { 'auth_type': 'reauthenticate' }, 'METHOD': 'oauth2', 'LOCALE_FUNC': lambda request: 'en_GB' } }
+SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email', 'user_birthday'], 'AUTH_PARAMS': { 'auth_type': 'reauthenticate' }, 'METHOD': 'oauth2', 'LOCALE_FUNC': lambda request: 'en_GB' } }
 
 ##### end allauth
 
