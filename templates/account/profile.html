@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 
@@ -16,7 +17,7 @@
 	</tr>
 	<tr>
 		<th>
-			Username
+			{% trans "Username" %}
 		</th>
 		<td>
 			{{user.username}}
@@ -24,7 +25,7 @@
 	</tr>
 	<tr>
 		<th>
-			Full name
+			{% trans "Full name" %}
 		</th>
 		<td>
 			{{user.get_full_name}}
@@ -32,7 +33,7 @@
 	</tr>
 	<tr>
 		<th>
-			Email
+			{% trans "Email" %}
 		</th>
 		<td>
 			{{user.email}}
@@ -41,7 +42,7 @@
 	{% if user.userprofile.date_of_birth %}
 	<tr>
 		<th>
-			Gender
+			{% trans "Date of birth" %}
 		</th>
 		<td>
 			{{user.userprofile.date_of_birth}}
@@ -51,7 +52,7 @@
 	{% if user.userprofile.gender %}
 	<tr>
 		<th>
-			Gender
+			{% trans "Gender" %}
 		</th>
 		<td>
 			<i class="fa fa-{{user.userprofile.gender}}"></i> {{user.userprofile.get_gender_display}}
@@ -60,7 +61,7 @@
 	{% endif %}
 	<tr>
 		<th>
-			Registered
+			{% trans "Registered" %}
 		</th>
 		<td>
 			{{user.date_joined}}
@@ -69,7 +70,7 @@
 	{% if user.is_staff or user.is_superuser %}
 	<tr>
 		<th>
-			Access
+			{% trans "Access" %}
 		</th>
 		<td>
 			{% if user.is_staff %}<span class="label label-info">Staff</span>{% endif %}

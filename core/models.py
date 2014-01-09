@@ -1,14 +1,17 @@
+# -*- coding: utf-8
+
+from django.utils.translation import ugettext as _
+
 ### Models
 from django.db import models
-
 
 from django.contrib.auth.models import User
 from django_countries import CountryField
 
 
 CHOICES_GENDER = (
-	('female', 'Female'),
-	('male', 'Male'),
+	('female', _('Female')),
+	('male', _('Male')),
 	)
 
 
