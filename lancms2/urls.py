@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-	url ('^accounts/profile/$', 'core.views.selfprofile'),
+	url ('^accounts/profile/$', 'core.views.selfprofile', name='account_profile'),
 	# allauth:
 	url ('^accounts/', include ('allauth.urls')),
 	url ('^$', 'core.views.index'),
