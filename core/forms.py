@@ -31,13 +31,18 @@ class SignupForm (forms.Form):
 		userprofile.save ()
 	
 	def __init__ (self, *args, **kwargs):
-		sociallogin = self.sociallogin
-		initial = kwargs['initial']
-		initial['date_of_birth'] = datetime.datetime.strptime(sociallogin.account.extra_data['birthday'], "%m/%d/%Y")
-		initial['gender'] = sociallogin.account.extra_data['gender']
-		# mboehn: This is some interesting stuff. What am I doing???!
-		kwargs.update (
-			{ 'initial': initial,
-			}
-		)
+		try:
+			sociallogin = self.sociallogin
+			initial = kwargs['initial']
+			initial['date_of_birth'] = datetime.datetime.strptime(sociallogin.account.extra_data['birthday'], "%m/%d/%Y")
+			initial['gender'] = sociallogin.account.extra_data['gender']
+			# mboehn: This is some interesting stuff. What am I doing???!
+			kwargs.update (
+				{ 'initial': initial,
+				}
+			)
+		except:
+			pass
+
+
 		super (SignupForm, self).__init__ (*args, **kwargs)
