@@ -22,10 +22,27 @@ class SignupForm (forms.Form):
 		user.first_name = self.cleaned_data['first_name']
 		user.last_name = self.cleaned_data['last_name']
 		user.save ()
-		userprofile = UserProfile (user=user)
+		userprofile, upcreated = UserProfile.objects.get_or_create (user=user)
 		userprofile.date_of_birth = self.cleaned_data['date_of_birth']
 		userprofile.streetaddress = self.cleaned_data['streetaddress']
 		userprofile.postalcode = self.cleaned_data['postalcode']
 		userprofile.gender = self.cleaned_data['gender']
 		userprofile.phone = self.cleaned_data['phone']
 		userprofile.save ()
+	
+	def __init__ (self, *args, **kwargs):
+		try:
+			sociallogin = self.sociallogin
+			initial = kwargs['initial']
+			initial['date_of_birth'] = datetime.datetime.strptime(sociallogin.account.extra_data['birthday'], "%m/%d/%Y")
+			initial['gender'] = sociallogin.account.extra_data['gender']
+			# mboehn: This is some interesting stuff. What am I doing???!
+			kwargs.update (
+				{ 'initial': initial,
+				}
+			)
+		except:
+			pass
+
+
+		super (SignupForm, self).__init__ (*args, **kwargs)

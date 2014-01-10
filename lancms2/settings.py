@@ -118,9 +118,13 @@ AUTHENTICATION_BACKENDS = DEFAULT_SETTINGS.AUTHENTICATION_BACKENDS + (
 	'allauth.account.auth_backends.AuthenticationBackend',
 	)
 
-SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email', 'user_birthday'], 'AUTH_PARAMS': { 'auth_type': 'reauthenticate' }, 'METHOD': 'oauth2', 'LOCALE_FUNC': lambda request: 'en_GB' } }
+SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email', 'user_about_me', 'user_birthday'], 'AUTH_PARAMS': { 'auth_type': 'reauthenticate' }, 'METHOD': 'oauth2', 'LOCALE_FUNC': lambda request: 'en_GB' } }
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'core.forms.SignupForm'
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'Mandatory'
+SOCIALACCOUNT_AUTO_SIGNUP = False
 
 ##### end allauth
 
