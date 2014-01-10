@@ -20,7 +20,7 @@ class UserProfile(models.Model):
 	date_of_birth = models.DateField (null=True)
 	streetaddress = models.CharField (max_length=255, null=True)
 	country = CountryField (null=True)
-	postalcode = models.IntegerField (null=True)
+	postalcode = models.PositiveSmallIntegerField (null=True)
 	gender = models.CharField (max_length=6, choices=CHOICES_GENDER, null=True)
 	phone = models.CharField (max_length=20, null=True)
 
