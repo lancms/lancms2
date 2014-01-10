@@ -22,6 +22,7 @@ class UserProfile(models.Model):
 	country = CountryField (null=True)
 	postalcode = models.IntegerField (null=True)
 	gender = models.CharField (max_length=6, choices=CHOICES_GENDER, null=True)
+	phone = models.CharField (max_length=20, null=True)
 
 
 
