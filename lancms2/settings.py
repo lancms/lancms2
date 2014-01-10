@@ -122,6 +122,9 @@ SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email', 'user_birthday'], '
 
 ACCOUNT_SIGNUP_FORM_CLASS = 'core.forms.SignupForm'
 
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'Mandatory'
+
 ##### end allauth
 
 ##### start south
