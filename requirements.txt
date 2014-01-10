@@ -2,3 +2,4 @@ Django==1.6.1
 django_allauth
 django-debug-toolbar
 django-countries==1.5
+south

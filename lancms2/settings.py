@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'core',
 	 'debug_toolbar', # for DEBUG
 	 'django_countries',
+	 'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -120,6 +121,24 @@ AUTHENTICATION_BACKENDS = DEFAULT_SETTINGS.AUTHENTICATION_BACKENDS + (
 SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email', 'user_birthday'], 'AUTH_PARAMS': { 'auth_type': 'reauthenticate' }, 'METHOD': 'oauth2', 'LOCALE_FUNC': lambda request: 'en_GB' } }
 
 ##### end allauth
+
+##### start south
+SOUTH_MIGRATION_MODULES = {
+	'allauth': 'ignore',
+	'socialaccount': 'ignore',
+	'auth': 'ignore',
+	'django_countries': 'ignore',
+	'contenttypes': 'ignore',
+	'sessions': 'ignore',
+	'messages': 'ignore',
+	'staticfiles': 'ignore',
+	'debug_toolbar': 'ignore',
+	'account': 'ignore',
+	'admin': 'ignore',
+	'facebook': 'ignore',
+}
+##### end south
+
 
 
 ##### import settings from lancms2/local_settings.py
