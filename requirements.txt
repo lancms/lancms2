@@ -1,5 +1,12 @@
 Django==1.6.1
-django_allauth
-django-debug-toolbar
+South==0.8.4
+argparse==1.2.1
+django-allauth==0.15.0
 django-countries==1.5
-south
+django-debug-toolbar==1.0.1
+oauthlib==0.6.0
+python-openid==2.2.5
+requests==2.2.0
+requests-oauthlib==0.4.0
+sqlparse==0.1.10
+wsgiref==0.1.2
