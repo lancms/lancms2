@@ -120,6 +120,8 @@ AUTHENTICATION_BACKENDS = DEFAULT_SETTINGS.AUTHENTICATION_BACKENDS + (
 
 SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email', 'user_birthday'], 'AUTH_PARAMS': { 'auth_type': 'reauthenticate' }, 'METHOD': 'oauth2', 'LOCALE_FUNC': lambda request: 'en_GB' } }
 
+ACCOUNT_SIGNUP_FORM_CLASS = 'core.forms.SignupForm'
+
 ##### end allauth
 
 ##### start south
