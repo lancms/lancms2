@@ -22,3 +22,10 @@ class SignupForm (forms.Form):
 		user.first_name = self.cleaned_data['first_name']
 		user.last_name = self.cleaned_data['last_name']
 		user.save ()
+		userprofile = UserProfile (user=user)
+		userprofile.date_of_birth = self.cleaned_data['date_of_birth']
+		userprofile.streetaddress = self.cleaned_data['streetaddress']
+		userprofile.postalcode = self.cleaned_data['postalcode']
+		userprofile.gender = self.cleaned_data['gender']
+		userprofile.phone = self.cleaned_data['phone']
+		userprofile.save ()
