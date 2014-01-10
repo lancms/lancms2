@@ -59,6 +59,36 @@
 		</td>	
 	</tr>
 	{% endif %}
+	{% if user.userprofile.streetaddress %}
+	<tr>
+		<th>
+			{% trans "Street address" %}
+		</th>
+		<td>
+			{{user.userprofile.streetaddress}}
+		</td>	
+	</tr>
+	{% endif %}
+	{% if user.userprofile.postalcode %}
+	<tr>
+		<th>
+			{% trans "Postal code" %}
+		</th>
+		<td>
+			{{user.userprofile.postalcode}}
+		</td>	
+	</tr>
+	{% endif %}
+	{% if user.userprofile.phone %}
+	<tr>
+		<th>
+			{% trans "Phone number" %}
+		</th>
+		<td>
+			{{user.userprofile.phone}}
+		</td>	
+	</tr>
+	{% endif %}
 	<tr>
 		<th>
 			{% trans "Registered" %}
