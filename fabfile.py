@@ -7,6 +7,8 @@ import os
 def _environment ():
 	env.release = datetime.datetime.now().strftime ("%Y-%m-%d-%H%M%S")
 
+	env.project_name = 'lancms2'
+
 	# FIXME: hardcoded path:
 	env.path_home = '/opt/lancms2/'
 	env.path_root = os.path.join (env.path_home, 'deployment/')
@@ -16,6 +18,10 @@ def _environment ():
 	env.path_full_release = os.path.join (env.path_releases, env.release)
 	env.path_full_release_local_settings = os.path.join (env.path_full_release, 'lancms2/local_settings.py')
 	env.path_full_release_local_sqlite = os.path.join (env.path_full_release, 'lancms2/lancms2.sql')
+
+	env.path_apache2_sites_available = '/etc/apache2/sites-available/'
+	env.filename_apacheconf = 'apache2-wsgi-virtualhost.conf'
+
 	env.virenv = 'source %s/virtualenv/bin/activate' % env.path_root
 
 	# FIXME: hardcoded user and group:
@@ -105,6 +111,16 @@ def _restart_webserver ():
 	sudo ('/usr/sbin/service apache2 restart', shell=False)
 	print (green ('Restarted apache2'))
 
+
+def _configure_webserver ():
+	path_sfile = os.path.join (env.path_current, env.filename_apacheconf)
+	if files.exists (path_sfile):
+		path_dfile = os.path.join (env.path_apache2_sites_available, env.project_name)
+		print( red('/bin/cp -f %s %s' % (path_sfile, path_dfile), shell=False))
+		# green
+	else:
+		print (red ("Didn't configure apache2, no config file found."))
+
 def deploy ():
 	_check_hosts ()
 	_environment ()
@@ -116,6 +132,7 @@ def deploy ():
 	_symlink_current_release ()
 	_syncdb ()
 	_migrate ()
+	_configure_webserver ()
 	_restart_webserver ()
 	_set_release_permissions ()
 
