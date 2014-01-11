@@ -91,11 +91,19 @@ def _check_hosts ():
 def _syncdb ():
 	with cd (env.path_current):
 		run ('source %svirtualenv/bin/activate; ./manage.py syncdb --noinput' % env.path_root)
+		print (green ('Ran syncdb'))
+
 
 def _migrate ():
 	with cd (env.path_current):
 		run ('source %svirtualenv/bin/activate; ./manage.py migrate' % env.path_root)
-	
+		print (green ('Ran migrate'))
+
+
+def _restart_webserver ():
+	# FIXME: this could be to Debian specific for real reuse. I don't know, haven't used anything but Debian in a long while. :-)
+	sudo ('/usr/sbin/service apache2 restart', shell=False)
+	print (green ('Restarted apache2'))
 
 def deploy ():
 	_check_hosts ()
@@ -108,6 +116,7 @@ def deploy ():
 	_symlink_current_release ()
 	_syncdb ()
 	_migrate ()
+	_restart_webserver ()
 	_set_release_permissions ()
 
 
