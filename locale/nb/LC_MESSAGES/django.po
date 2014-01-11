@@ -1,90 +1,92 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Norwegian Bokmal translation for lancms
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the lancms package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-11 22:30+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Project-Id-Version: lancms\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-01-11 20:52+0100\n"
+"PO-Revision-Date: 2014-01-11 20:19+0000\n"
+"Last-Translator: Lars Åge Kamfjord <lars-launchpad@kamfjord.org>\n"
+"Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-01-11 20:24+0000\n"
+"X-Generator: Launchpad (build 16890)\n"
 
 #: core/forms.py:15
 msgid "First name"
-msgstr ""
+msgstr "Fornavn"
 
 #: core/forms.py:16
 msgid "Last name"
-msgstr ""
+msgstr "Etternavn"
 
 #: core/forms.py:17 templates/account/profile.html:45
 msgid "Date of birth"
-msgstr ""
+msgstr "Fødselsdato"
 
 #: core/forms.py:18 templates/account/profile.html:65
 msgid "Street address"
-msgstr ""
+msgstr "Gateadresse"
 
 #: core/forms.py:19 templates/account/profile.html:75
 msgid "Postal code"
-msgstr ""
+msgstr "Postnummer"
 
 #: core/forms.py:20 templates/account/profile.html:85
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: core/forms.py:21 templates/account/profile.html:55
 msgid "Gender"
-msgstr ""
+msgstr "Kjønn"
 
 #: core/forms.py:22
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: core/models.py:13
 msgid "Female"
-msgstr ""
+msgstr "Kvinne"
 
 #: core/models.py:14
 msgid "Male"
-msgstr ""
+msgstr "Mann"
 
 #: templates/base.html:30
 msgid "Log out"
-msgstr ""
+msgstr "Logg ut"
 
 #: templates/base.html:34
 msgid "Log in with Facebook"
-msgstr ""
+msgstr "Logg inn med Facebook"
 
 #: templates/base.html:35
 msgid "Sign up"
-msgstr ""
+msgstr "Registrer deg"
 
 #: templates/base.html:36
 msgid "Log in"
-msgstr ""
+msgstr "Logg inn"
 
 #: templates/base.html:47
 msgid ""
 "This site is a develoment or testing site. Please do not use this site if "
 "you are not a developer or tester. Bugs and traps may be inside."
 msgstr ""
+"Denne siden er en utvikling eller testside. Vennlig ikke bruk denne siden om "
+"du ikke er en utvikler eller tester. Feil og feller kan forekomme."
 
 #: templates/account/email_confirm.html:7
 #: templates/account/email_confirm.html:13
 #: templates/account/email_confirmed.html:6
 #: templates/account/email_confirmed.html:13
 msgid "Confirm E-mail Address"
-msgstr ""
+msgstr "Bekreft e-post adresse"
 
 #: templates/account/email_confirm.html:19
 #, python-format
@@ -92,17 +94,21 @@ msgid ""
 "Please confirm that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-mail "
 "address for user %(user_display)s."
 msgstr ""
+"Vennligst bekreft at <a href=\"mailto:%(email)s\">%(email)s</a> er en epost-"
+"adresse for bruker %(user_display)s."
 
 #: templates/account/email_confirm.html:23
 msgid "Confirm"
-msgstr ""
+msgstr "Bekreft"
 
 #: templates/account/email_confirm.html:30
 #, python-format
 msgid ""
-"This e-mail confirmation link expired or is invalid. Please <a href="
-"\"%(email_url)s\">issue a new e-mail confirmation request</a>."
+"This e-mail confirmation link expired or is invalid. Please <a "
+"href=\"%(email_url)s\">issue a new e-mail confirmation request</a>."
 msgstr ""
+"Denne epost-bekreftelseslinken er utgått eller ugyldig. Vennligst <a "
+"href=\"%(email_url)s\"> send en ny bekreftelsesforespørsel</a>."
 
 #: templates/account/email_confirmed.html:17
 #, python-format
@@ -110,11 +116,13 @@ msgid ""
 "You have confirmed that <a href=\"mailto:%(email)s\">%(email)s</a> is an e-"
 "mail address for user %(user_display)s."
 msgstr ""
+"Du har bekreftet at <a href=\"mailto:%(email)s\">%(email)s</a> er en gyldig "
+"epostadrese for bruker %(user_display)s."
 
 #: templates/account/login.html:7 templates/account/login.html.py:13
 #: templates/account/login.html:52
 msgid "Sign In"
-msgstr ""
+msgstr "Logg inn"
 
 #: templates/account/login.html:16
 #, python-format
@@ -124,10 +132,13 @@ msgid ""
 "up</a>\n"
 "for a %(site_name)s account and sign in below:"
 msgstr ""
+"Vennligst logg inn med en av dine eksisterende tredjepartskontoer eller <a "
+"href=\"%(signup_url)s\">registrer deg</a>\n"
+"for å få en konto på %(site_name)s og logg inn under"
 
 #: templates/account/login.html:26
 msgid "or"
-msgstr ""
+msgstr "eller"
 
 #: templates/account/login.html:33
 #, python-format
@@ -135,66 +146,69 @@ msgid ""
 "If you have not created an account yet, then please\n"
 "<a href=\"%(signup_url)s\">sign up</a> first."
 msgstr ""
+"Hvis du ikke har opprettet en konto ennå, gå til\n"
+"<a href=\"%(signup_url)s\">registreringssiden</a> først."
 
 #: templates/account/login.html:47
 msgid "Forgot Password?"
-msgstr ""
+msgstr "Glemt passord?"
 
 #: templates/account/logout.html:6 templates/account/logout.html.py:10
 #: templates/account/logout.html:19
 msgid "Sign Out"
-msgstr ""
+msgstr "Logg ut"
 
 #: templates/account/logout.html:12
 msgid "Are you sure you want to sign out?"
-msgstr ""
+msgstr "Er du sikker på at du vil logge ut?"
 
 #: templates/account/profile.html:20
 msgid "Username"
-msgstr ""
+msgstr "Brukernavn"
 
 #: templates/account/profile.html:28
 msgid "Full name"
-msgstr ""
+msgstr "Fullt navn"
 
 #: templates/account/profile.html:36
 msgid "Email"
-msgstr ""
+msgstr "E-post"
 
 #: templates/account/profile.html:95
 msgid "Phone number"
-msgstr ""
+msgstr "Telefonnummer"
 
 #: templates/account/profile.html:104
 msgid "Registered"
-msgstr ""
+msgstr "Registrert"
 
 #: templates/account/profile.html:113
 msgid "Access"
-msgstr ""
+msgstr "Tilgang"
 
 #: templates/account/signup.html:6 templates/socialaccount/signup.html:6
 msgid "Signup"
-msgstr ""
+msgstr "Registrer deg"
 
 #: templates/account/signup.html:12 templates/account/signup.html.py:25
 #: templates/socialaccount/signup.html:11
 #: templates/socialaccount/signup.html:26
 msgid "Sign Up"
-msgstr ""
+msgstr "Registrer deg"
 
 #: templates/account/signup.html:14
 #, python-format
 msgid ""
 "Already have an account? Then please <a href=\"%(login_url)s\">sign in</a>."
 msgstr ""
+"Har du allerede en konto? Da kan du <a href=\"%(login_url)s\">logge inn</a>."
 
 #: templates/account/verification_sent.html:5
 #: templates/account/verification_sent.html:9
 #: templates/account/verified_email_required.html:6
 #: templates/account/verified_email_required.html:10
 msgid "Verify Your E-mail Address"
-msgstr ""
+msgstr "Bekreft epost-adressen din"
 
 #: templates/account/verification_sent.html:11
 msgid ""
@@ -202,6 +216,9 @@ msgid ""
 "finalize the signup process. Please contact us if you do not receive it "
 "within a few minutes."
 msgstr ""
+"Vi har sendt deg en e-post for å bekrefte adressen din. Følg lenken i "
+"eposten for å gjøre ferdig registreringsprosessen. Vennligst kontakt oss "
+"hvis du ikke har fått denne adressen innen et par minutter."
 
 #: templates/account/verified_email_required.html:14
 msgid ""
@@ -209,6 +226,9 @@ msgid ""
 "you are who you claim to be. For this purpose, we require that you\n"
 "verify ownership of your e-mail address. "
 msgstr ""
+"Denne delen av siden krever at du bekrefter til oss at\n"
+"du er den du mener du er. For dette, så trenger vi at du\n"
+"bekrefter eierskapet av din epost-adresse "
 
 #: templates/account/verified_email_required.html:18
 msgid ""
@@ -216,6 +236,9 @@ msgid ""
 "verification. Please click on the link inside this e-mail. Please\n"
 "contact us if you do not receive it within a few minutes."
 msgstr ""
+"Vi har sendt deg en e-post for\n"
+"å bekrefte. Vennligst klikk på lenken i denne e-posten.\n"
+"Kontakt oss hvis du ikke har mottatt denne i løpet av et par minutter."
 
 #: templates/account/verified_email_required.html:22
 #, python-format
@@ -223,6 +246,8 @@ msgid ""
 "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
 "mail address</a>."
 msgstr ""
+"<strong>Merk:</strong> du kan fortsatt <a href=\"%(email_url)s\">endre din "
+"epost-adresse</a>."
 
 #: templates/socialaccount/signup.html:13
 #, python-format
@@ -230,3 +255,5 @@ msgid ""
 "You are about to use your %(provider_name)s account to login to\n"
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
+"Du er nå på vei til å bruke din %(provider_name)s konto for å logge inn på\n"
+"%(site_name)s. Som et siste skritt, vennligst fullfør følgende skjema:"

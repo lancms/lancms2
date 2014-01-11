@@ -74,8 +74,15 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
+#LANGUAGE_CODE = 'en' # Use for english text
+LANGUAGE_CODE = 'nb' # Use for norwegian text
+#LANGUAGES = (
+#	('en', 'English'),
+#	('nb', 'Norwegian (bokmal)'),
+#)
+LOCALE_PATHS = (
+	os.path.join(BASE_DIR, 'locale'),
+)
 TIME_ZONE = 'Europe/Oslo'
 
 USE_I18N = True
@@ -113,6 +120,7 @@ TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
 	'django.core.context_processors.request',
 	'allauth.account.context_processors.account',
 	'allauth.socialaccount.context_processors.socialaccount',
+	'django.core.context_processors.i18n', 	# For i18n/gettext-support
 	)
 AUTHENTICATION_BACKENDS = DEFAULT_SETTINGS.AUTHENTICATION_BACKENDS + (
 	'allauth.account.auth_backends.AuthenticationBackend',
