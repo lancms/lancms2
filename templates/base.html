@@ -58,12 +58,9 @@
 		{% endblock %}
 		<hr>
 		<footer>
-			<p>&copy; <a href='http://launchpad.net/lancms/'>lancms</a></p>
+			<p>&copy; <a href='http://launchpad.net/lancms/'>lancms</a>{% if DEBUG_REV %}(rev {{DEBUG_REV}})</p>{% endif %}
 			{% get_current_language as LANGUAGE_CODE %}
 			<!-- Current language: {{ LANGUAGE_CODE }} -->
-			{% if DEBUG_REV %}
-			{% trans "Current revision is:" %} {{DEBUG_REV}}
-			{% endif %}
 		</footer>
 		</div> <!-- /container -->
 
