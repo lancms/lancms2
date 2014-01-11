@@ -10,6 +10,11 @@ def prtr (template, c, request):
 			c['DEBUG_WARN'] = True
 	except:
 		pass
+	try:
+		if settings.DEBUG_REV:
+			c['DEBUG_REV'] = settings.DEBUG_REV
+	except:
+		pass
 
 	return render_to_response (template, c, context_instance=RequestContext(request))
 

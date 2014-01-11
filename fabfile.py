@@ -140,6 +140,11 @@ def _collectstatic ():
 		print (green ('Ran collectstatic'))
 	
 
+def _put_revision_number ():
+	local ('bzr revno > /tmp/%s' % env.release)
+	put ('/tmp/%s' % env.release, '%s/.bzr_rev' % env.path_full_release, mode=0750)
+	local ('rm /tmp/%s' % env.release)
+
 
 def deploy ():
 	_check_hosts ()
@@ -156,6 +161,7 @@ def deploy ():
 	_collectstatic ()
 	_configure_webserver ()
 	_restart_webserver ()
+	_put_revision_number ()
 	_set_release_permissions ()
 
 

@@ -1,3 +1,4 @@
 lancms2.sql
 *.py[co]
 lancms2/local_settings.py
+.bzr_rev
