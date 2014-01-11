@@ -40,7 +40,14 @@
 				</div>
 			</div>
 		</div>
-		
+
+		{% if DEBUG_WARN %}
+			<div class="alert alert-warning alert-dismissable" style="background-color: orange; text-align: center;">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="True">&times;</button>
+				<b>{% trans "This site is a develoment or testing site. Please do not use this site if you are not a developer or tester. Bugs and traps may be inside." %}</b>
+			</div>
+		{% endif %}
+
 		{% for message in messages %}
 			<div class="alert alert-{{message.tags}} alert-dismissable">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="True">&times;</button>
