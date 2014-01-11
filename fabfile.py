@@ -94,6 +94,17 @@ def _check_hosts ():
 		help ()
 		sys.exit ()
 
+
+def _install_local_requirements ():
+	path_file = os.path.join (env.path_home, 'REQUIREMENTS.txt')
+	if files.exists (path_file):
+		with cd ('%s' % env.path_full_release):
+			run ('source %svirtualenv/bin/activate; pip install -r %s' % (env.path_root, path_file))
+			print (green ('Installed local requirements (%s) in virtual environment' % path_file))
+	else:
+		print (red ('No local requirements (%s)' % path_file))
+
+
 def _syncdb ():
 	with cd (env.path_current):
 		run ('source %svirtualenv/bin/activate; ./manage.py syncdb --noinput' % env.path_root)
@@ -136,6 +147,7 @@ def deploy ():
 	_upload_and_unpack ()
 	_create_virtualenv ()
 	_install_requirements ()
+	_install_local_requirements ()
 	_symlink_local_settings ()
 	_symlink_local_sqlite ()
 	_symlink_current_release ()
