@@ -6,3 +6,5 @@
 #./manage.py makemessages --all -e html -e py -l en-us
 ./manage.py makemessages -l en_US -d django -s
 cp locale/en_US/LC_MESSAGES/django.po locale/django.pot
+#cp locale/nb.po locale/nb_NO/LC_MESSAGES/django.po
+./manage.py compilemessages
