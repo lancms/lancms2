@@ -32,7 +32,7 @@ def _upload_and_unpack ():
 
 	# put places local file on remote server
 	put ('%s.tar.gz' % env.release, env.path_releases, mode=0750)
-
+	local ('rm -f %s.tar.gz' % env.release)
 	with cd ('%s' % env.path_releases):
 		run ('tar -xzf %s.tar.gz' % env.release)
 		run ('rm %s.tar.gz' % env.release)
@@ -80,7 +80,18 @@ def _symlink_current_release ():
 	print (green ('Symlinked current release %s to %s' % (env.release, env.path_current)))
 
 
+def _check_hosts ():
+	if not env.hosts or env.hosts == "":
+		import sys
+		print ""
+		print red("Missing hosts. Printing helptext.")
+		help ()
+		sys.exit ()
+		
+
+
 def deploy ():
+	_check_hosts ()
 	_environment ()
 	_upload_and_unpack ()
 	_create_virtualenv ()
@@ -96,4 +107,5 @@ def help ():
 	print "deployment script for lancms2"
 	print ""
 	print "Only available command is 'deploy'."
+	print "Remember to define host (-H username@127.0.0.1)"
 	print "Please don't use this if you don't know what it does! No warranties!"
