@@ -116,8 +116,9 @@ def _configure_webserver ():
 	path_sfile = os.path.join (env.path_current, env.filename_apacheconf)
 	if files.exists (path_sfile):
 		path_dfile = os.path.join (env.path_apache2_sites_available, env.project_name)
-		print( red('/bin/cp -f %s %s' % (path_sfile, path_dfile), shell=False))
-		# green
+		sudo ('/bin/cp -f %s %s' % (path_sfile, path_dfile), shell=False)
+		sudo ('/usr/sbin/a2ensite %s' % env.project_name, shell=False)
+		print (green ('Configured apache2 and activated site'))
 	else:
 		print (red ("Didn't configure apache2, no config file found."))
 
