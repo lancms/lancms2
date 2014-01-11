@@ -123,7 +123,7 @@ SOCIALACCOUNT_PROVIDERS = { 'facebook': { 'SCOPE': ['email', 'user_about_me', 'u
 ACCOUNT_SIGNUP_FORM_CLASS = 'core.forms.SignupForm'
 
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'Mandatory'
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 SOCIALACCOUNT_AUTO_SIGNUP = False
 
 ##### end allauth
