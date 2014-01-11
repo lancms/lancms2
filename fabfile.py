@@ -122,6 +122,14 @@ def _configure_webserver ():
 	else:
 		print (red ("Didn't configure apache2, no config file found."))
 
+
+def _collectstatic ():
+	with cd (env.path_current):
+		run ('source %svirtualenv/bin/activate; ./manage.py collectstatic --noinput' % env.path_root)
+		print (green ('Ran collectstatic'))
+	
+
+
 def deploy ():
 	_check_hosts ()
 	_environment ()
@@ -133,6 +141,7 @@ def deploy ():
 	_symlink_current_release ()
 	_syncdb ()
 	_migrate ()
+	_collectstatic ()
 	_configure_webserver ()
 	_restart_webserver ()
 	_set_release_permissions ()
