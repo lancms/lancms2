@@ -79,6 +79,16 @@
 		</td>	
 	</tr>
 	{% endif %}
+	{% if user.userprofile.country %}
+	<tr>
+		<th>
+			{% trans "Country" %}
+		</th>
+		<td>
+			{{user.userprofile.country.name}}
+		</td>	
+	</tr>
+	{% endif %}
 	{% if user.userprofile.phone %}
 	<tr>
 		<th>

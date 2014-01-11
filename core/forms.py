@@ -8,6 +8,8 @@ from django.forms.extras.widgets import SelectDateWidget
 import datetime
 from core.models import UserProfile, CHOICES_GENDER
 
+from django_countries import countries
+
 class SignupForm (forms.Form):
 	# FIXME: Not sure if hardcoding a copy of the d.c.auth.m.User and core.models.UserProfile is the right thing to do, but I'll do it for now:
 	first_name = forms.CharField (max_length=30, label=_('First name'))
@@ -15,6 +17,7 @@ class SignupForm (forms.Form):
 	date_of_birth = forms.DateField (widget=SelectDateWidget(years=range(datetime.date.today().year, 1900, -1)), label=_('Date of birth'))
 	streetaddress = forms.CharField (max_length=255, label=_('Street address'))
 	postalcode = forms.IntegerField (label=_('Postal code'))
+	country = forms.ChoiceField (choices=countries.COUNTRIES, label=_('Country'))
 	gender = forms.ChoiceField (choices=CHOICES_GENDER, label=_('Gender'))
 	phone = forms.CharField (max_length=20, label=_('Phone'))
 
@@ -28,6 +31,7 @@ class SignupForm (forms.Form):
 		userprofile.postalcode = self.cleaned_data['postalcode']
 		userprofile.gender = self.cleaned_data['gender']
 		userprofile.phone = self.cleaned_data['phone']
+		userprofile.country = self.cleaned_data['country']
 		userprofile.save ()
 	
 	def __init__ (self, *args, **kwargs):
