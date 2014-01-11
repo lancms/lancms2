@@ -17,7 +17,7 @@ def _environment ():
 	env.path_releases = os.path.join (env.path_root, 'releases/')
 	env.path_full_release = os.path.join (env.path_releases, env.release)
 	env.path_full_release_local_settings = os.path.join (env.path_full_release, 'lancms2/local_settings.py')
-	env.path_full_release_local_sqlite = os.path.join (env.path_full_release, 'lancms2/lancms2.sql')
+	env.path_full_release_local_sqlite = os.path.join (env.path_full_release, 'lancms2.sql')
 
 	env.path_apache2_sites_available = '/etc/apache2/sites-available/'
 	env.filename_apacheconf = 'apache2-wsgi-virtualhost.conf'
