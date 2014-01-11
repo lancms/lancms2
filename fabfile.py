@@ -87,8 +87,15 @@ def _check_hosts ():
 		print red("Missing hosts. Printing helptext.")
 		help ()
 		sys.exit ()
-		
 
+def _syncdb ():
+	with cd (env.path_current):
+		run ('source %svirtualenv/bin/activate; ./manage.py syncdb --noinput' % env.path_root)
+
+def _migrate ():
+	with cd (env.path_current):
+		run ('source %svirtualenv/bin/activate; ./manage.py migrate' % env.path_root)
+	
 
 def deploy ():
 	_check_hosts ()
@@ -99,6 +106,8 @@ def deploy ():
 	_symlink_local_settings ()
 	_symlink_local_sqlite ()
 	_symlink_current_release ()
+	_syncdb ()
+	_migrate ()
 	_set_release_permissions ()
 
 
