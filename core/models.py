@@ -29,7 +29,7 @@ class UserProfile(models.Model):
 class Organization (models.Model):
 	name = models.CharField (max_length=64)
 	about = models.TextField (null=True)
-	owner = models.ForeignKey (Group)
+	owner = models.ForeignKey (Group,null=True)
 
 	def __unicode__ (self):
 		return self.name
