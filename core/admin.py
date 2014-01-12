@@ -7,7 +7,6 @@ from core.models import Organization, Event
 
 class OrganizationAdmin (admin.ModelAdmin):
 	list_display = ('name',)
-#	exclude = ('owner', )
 	readonly_fields = ('owner', )
 	
 	def save_model(self, request, obj, form, change):
@@ -18,7 +17,15 @@ class OrganizationAdmin (admin.ModelAdmin):
 		obj.save()
 	
 class EventAdmin (admin.ModelAdmin):
-	pass
+	list_display = ('name',)
+	readonly_fields = ('owner', )
+	
+	def save_model(self, request, obj, form, change):
+		g = Group(name=obj.name + '_admin')
+		g.save()
+		
+		obj.owner = g		
+		obj.save()
 
 admin.site.register (Organization, OrganizationAdmin)
 admin.site.register (Event, EventAdmin)
