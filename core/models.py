@@ -1,6 +1,6 @@
 # -*- coding: utf-8
 
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 ### Models
 from django.db import models
@@ -27,17 +27,25 @@ class UserProfile(models.Model):
 
 
 class Organization (models.Model):
-	name = models.CharField (max_length=64)
-	about = models.TextField (null=True)
-	owner = models.ForeignKey (Group,null=True)
+	name = models.CharField (max_length=64, verbose_name=_('Name'))
+	about = models.TextField (null=True, verbose_name=_('About'))
+	owner = models.ForeignKey (Group,null=True, verbose_name=_('Owner'))
 
 	def __unicode__ (self):
 		return self.name
+	
+	class Meta:
+		verbose_name = _('Organization')
+		verbose_name_plural = _('Organizations')
 
 class Event (models.Model):
-	organization = models.ForeignKey(Organization)
-	name = models.CharField (max_length=64)
-	owner = models.ForeignKey (Group)
+	organization = models.ForeignKey(Organization, verbose_name=_('Organization'))
+	name = models.CharField (max_length=64, verbose_name=_('Name'))
+	owner = models.ForeignKey (Group, verbose_name=_('Owner'))
 	
 	def __unicode__ (self):
 		return self.name
+	
+	class Meta:
+		verbose_name = _('Event')
+		verbose_name_plural = _('Events')
