@@ -12,6 +12,7 @@ class OrganizationAdmin (admin.ModelAdmin):
 	def save_model(self, request, obj, form, change):
 		g = Group(name=obj.name + '_admin')
 		g.save()
+		g.user_set.add(request.user)
 		
 		obj.owner = g		
 		obj.save()
@@ -23,6 +24,7 @@ class EventAdmin (admin.ModelAdmin):
 	def save_model(self, request, obj, form, change):
 		g = Group(name=obj.name + '_admin')
 		g.save()
+		g.user_set.add(request.user)
 		
 		obj.owner = g		
 		obj.save()
