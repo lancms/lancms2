@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-11 22:30+0100\n"
+"POT-Creation-Date: 2014-01-12 20:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,34 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
+#: core/models.py:30 core/models.py:43
+msgid "Name"
+msgstr ""
+
+#: core/models.py:31
+msgid "About"
+msgstr ""
+
+#: core/models.py:32 core/models.py:44
+msgid "Owner"
+msgstr ""
+
+#: core/models.py:38 core/models.py:42
+msgid "Organization"
+msgstr ""
+
+#: core/models.py:39
+msgid "Organizations"
+msgstr ""
+
+#: core/models.py:50
+msgid "Event"
+msgstr ""
+
+#: core/models.py:51
+msgid "Events"
+msgstr ""
+
 #: templates/base.html:30
 msgid "Log out"
 msgstr ""
@@ -73,7 +101,7 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:47
+#: templates/base.html:46
 msgid ""
 "This site is a develoment or testing site. Please do not use this site if "
 "you are not a developer or tester. Bugs and traps may be inside."
