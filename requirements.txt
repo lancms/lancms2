@@ -1,12 +1,10 @@
 Django==1.6.1
 South==0.8.4
-argparse==1.2.1
 django-allauth==0.15.0
-django-countries==1.5
+django-countries==2.0b4
 django-debug-toolbar==1.0.1
 oauthlib==0.6.0
-python-openid==2.2.5
+python3-openid==3.0.3
 requests==2.2.0
 requests-oauthlib==0.4.0
 sqlparse==0.1.10
-wsgiref==0.1.2

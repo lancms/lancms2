@@ -17,7 +17,7 @@ class SignupForm (forms.Form):
 	date_of_birth = forms.DateField (widget=SelectDateWidget(years=range(datetime.date.today().year, 1900, -1)), label=_('Date of birth'))
 	streetaddress = forms.CharField (max_length=255, label=_('Street address'))
 	postalcode = forms.IntegerField (label=_('Postal code'))
-	country = forms.ChoiceField (choices=countries.COUNTRIES, label=_('Country'))
+	country = forms.ChoiceField (choices=countries, label=_('Country'))
 	gender = forms.ChoiceField (choices=CHOICES_GENDER, label=_('Gender'))
 	phone = forms.CharField (max_length=20, label=_('Phone'))
 
