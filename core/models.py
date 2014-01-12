@@ -33,3 +33,11 @@ class Organization (models.Model):
 
 	def __unicode__ (self):
 		return self.name
+
+class Event (models.Model):
+	organization = models.ForeignKey(Organization)
+	name = models.CharField (max_length=64)
+	owner = models.ForeignKey (Group)
+	
+	def __unicode__ (self):
+		return self.name
