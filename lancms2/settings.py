@@ -101,6 +101,8 @@ MEDIA_ROOT = os.path.join (BASE_DIR, 'media/')
 STATIC_ROOT = os.path.join (BASE_DIR, 'static/')
 TEMPLATE_DIRS = os.path.join (BASE_DIR, 'templates/')
 
+LOGIN_REDIRECT_URL = 'core.views.selfprofile'
+
 ##### example on how to add to the default settings
 # import django.conf.global_settings as DEFAULT_SETTINGS
 # TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
