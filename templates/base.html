@@ -37,6 +37,9 @@
 							</li>
 
 							{% endif %}
+							{% if user.is_staff %}
+							<li><a href="{% url 'admin:index' %}">{% trans "Admin" %}</a></li>
+							{% endif %}
 							<li><a href="{% url 'account_profile' %}">{{user.username}}</a></li>
 							<li><a href="{% url 'account_logout' %}">{% trans "Log out" %}</a></li>
 						</ul>
