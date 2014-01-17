@@ -52,6 +52,7 @@ class Organization (models.Model):
 	owner = models.ForeignKey (Group,null=True, verbose_name=_('Owner'))
 	is_active = models.BooleanField (default=False)
 	urlslug = models.SlugField (verbose_name=_('URL-slug'))
+	externalurl = models.URLField (null=True)
 
 
 	def __unicode__ (self):
