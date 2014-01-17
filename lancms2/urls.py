@@ -6,6 +6,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+	
+	url ('^org/(?P<slug>[\w-]+)/$', 'core.views.organization_front', name='organization_front'),
+	
+	
 	url ('^accounts/profile/$', 'core.views.selfprofile', name='account_profile'),
 	# allauth:
 	url ('^accounts/', include ('allauth.urls')),

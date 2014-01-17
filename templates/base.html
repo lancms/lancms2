@@ -31,7 +31,7 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Organizations" %} <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									{% for org in user.userprofile.organizations %}
-									<li><a href="#">{{org}}</a></li>
+									<li><a href="{% url 'organization_front' slug=org.urlslug %}">{{org}}</a></li>
 									{% endfor %}
 								</ul>
 							</li>
