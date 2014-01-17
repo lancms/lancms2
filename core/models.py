@@ -30,16 +30,27 @@ class UserProfile(models.Model):
 	def owns_organizations (self):
 		try:
 			for group in self.user.groups.all():
-				if group.organization_set.count():
+				if group.organization_set.filter(is_active=True).count():
 					return True
 		except:
 			return False
+	
+	def organizations (self):
+		try:
+			orgs = []
+			for group in self.user.groups.all():
+				for org in group.organization_set.filter(is_active=True):
+					orgs.append (org)
+			return orgs
+		except:
+			pass
 
 
 class Organization (models.Model):
 	name = models.CharField (max_length=64, verbose_name=_('Name'))
 	about = models.TextField (null=True, verbose_name=_('About'))
 	owner = models.ForeignKey (Group,null=True, verbose_name=_('Owner'))
+	is_active = models.BooleanField (default=False)
 
 
 	def __unicode__ (self):
