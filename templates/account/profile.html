@@ -118,6 +118,16 @@
 		</td>
 	</tr>
 	{% endif %}
+	{% if user.userprofile.owns_organizations %}
+	<tr>
+		<th>
+			{% trans "Organizations" %}
+		</th>
+		<td>
+			{% for org in user.userprofile.organizations %}<a href="{% url 'organization_front' slug=org.urlslug %}"><span class="label label-default">{{org.name}}</span></a>{% endfor %}
+		</td>
+	</tr>
+	{% endif %}
 </table>
 </div>
 </div>
