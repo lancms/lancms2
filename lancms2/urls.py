@@ -13,7 +13,7 @@ urlpatterns = patterns('',
 	url ('^accounts/profile/$', 'core.views.selfprofile', name='account_profile'),
 	# allauth:
 	url ('^accounts/', include ('allauth.urls')),
-	url ('^$', 'core.views.index'),
+	url ('^$', 'core.views.index', name='index'),
         
 	# Examples:
 	# url(r'^lancms2/', include('lancms2.foo.urls')),

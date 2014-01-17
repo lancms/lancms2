@@ -21,7 +21,7 @@
 			<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="container">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#">LANCMS</a>
+						<a class="navbar-brand" href="{% url 'index' %}">LANCMS</a>
 					</div>
 					<div class="navbar-collapse collapse">
 						{% if user.is_authenticated %}
