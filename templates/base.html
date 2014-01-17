@@ -21,11 +21,22 @@
 			<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				<div class="container">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="#">LANCMS</a>
+						<a class="navbar-brand" href="{% url 'index' %}">LANCMS</a>
 					</div>
 					<div class="navbar-collapse collapse">
 						{% if user.is_authenticated %}
 						<ul class="nav navbar-nav pull-right">
+							{% if user.userprofile.owns_organizations %}
+							<li class="dropdrown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Your organizations" %} <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									{% for org in user.userprofile.organizations %}
+									<li><a href="{% url 'organization_front' slug=org.urlslug %}">{{org}}</a></li>
+									{% endfor %}
+								</ul>
+							</li>
+
+							{% endif %}
 							<li><a href="{% url 'account_profile' %}">{{user.username}}</a></li>
 							<li><a href="{% url 'account_logout' %}">{% trans "Log out" %}</a></li>
 						</ul>
