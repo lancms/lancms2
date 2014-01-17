@@ -51,6 +51,7 @@ class Organization (models.Model):
 	about = models.TextField (null=True, verbose_name=_('About'))
 	owner = models.ForeignKey (Group,null=True, verbose_name=_('Owner'))
 	is_active = models.BooleanField (default=False)
+	urlslug = models.SlugField (verbose_name=_('URL-slug'))
 
 
 	def __unicode__ (self):
