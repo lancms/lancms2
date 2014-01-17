@@ -26,6 +26,9 @@
 					<div class="navbar-collapse collapse">
 						{% if user.is_authenticated %}
 						<ul class="nav navbar-nav pull-right">
+							{% if user.userprofile.owns_organizations %}
+							<li><a href="{% url 'account_profile' %}">{% trans "Organizations" %}</a></li>
+							{% endif %}
 							<li><a href="{% url 'account_profile' %}">{{user.username}}</a></li>
 							<li><a href="{% url 'account_logout' %}">{% trans "Log out" %}</a></li>
 						</ul>
