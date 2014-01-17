@@ -58,6 +58,9 @@ class Organization (models.Model):
 	def __unicode__ (self):
 		return self.name
 
+	def user_is_owner (self, user):
+		return user.groups.filter(pk=self.owner.pk).exists()
+
 
 	class Meta:
 		verbose_name = _('Organization')
