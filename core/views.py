@@ -75,3 +75,12 @@ def organization_event_create (request, slug):
 	c['form'] = form
 	return prtr ('organization/event_create.html', c, request) 
 
+
+def event_front (request, orgslug, eventslug):
+	c = {}
+	org = get_object_or_404(Organization, urlslug=orgslug)
+	event = get_object_or_404(Event, urlslug=eventslug)
+	c['organization'] = org
+	c['event'] = event
+	
+	return prtr ('event/front.html', c, request) 
