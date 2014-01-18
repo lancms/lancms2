@@ -7,9 +7,9 @@ from django.shortcuts import get_object_or_404, redirect
 from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 
-
 from core.models import Organization, Event
 from core.forms import EventForm
+
 
 def index (request):
 	c = {}
@@ -21,6 +21,7 @@ def index (request):
 		c['events'] = events
 	return prtr ('index.html', c, request) 
 
+
 @login_required()
 def selfprofile (request):
 	c = {}
@@ -28,7 +29,16 @@ def selfprofile (request):
 
 
 def organization_front (request, slug):
-	c = {'organization': get_object_or_404(Organization, urlslug=slug)}
+	c = {}
+	org = get_object_or_404(Organization, urlslug=slug)
+	c['organization'] = org
+	
+	events = Event.objects.filter(is_active=True, organization=org)
+	if events.count () == 1:
+		c['event_featured'] = events[0]
+	else:
+		c['events'] = events
+	
 	return prtr ('organization/front.html', c, request) 
 
 
