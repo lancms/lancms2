@@ -13,8 +13,7 @@
 <a href="{{organization.externalurl}}" class="btn btn-primary btn-lg" role="button">{% trans "Visit website" %} &raquo;</a>
 {% endif %}
 {% if user|owns_org:organization %}
-<a href="#placeholder" class="btn btn-success btn-lg" role="button">{% trans "Administrate organization" %} &raquo;</a>
-{% comment %}<!-- FIXME: placeholder ^^ --><a href="{% url 'organization_admin' organization.urlslug %}" class="btn btn-success btn-lg" role="button">{% trans "Administrate organization" %} &raquo;</a>{% endcomment %}
+<a href="{% url 'organization_admin' organization.urlslug %}" class="btn btn-success btn-lg" role="button">{% trans "Administrate organization" %} &raquo;</a>
 {% endif %}
 </p>
 </div>

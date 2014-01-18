@@ -59,6 +59,7 @@ class Organization (models.Model):
 		return self.name
 
 	def user_is_owner (self, user):
+		# FIXME: could I have dropped pk? Not sure what else to filter on... -- mboehn
 		return user.groups.filter(pk=self.owner.pk).exists()
 
 
