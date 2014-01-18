@@ -19,7 +19,7 @@ def prtr (template, c, request):
 		pass
 
 
-	# organizations is used in base template. I'm adding it here. -- mboehn
+	# FIXME: This might ought to be a ContextProcessor-thingy? For now: Organizations is used in base template. I'm adding it here. -- mboehn
 	c['organizations'] = Organization.objects.filter(is_active=True)
 
 	return render_to_response (template, c, context_instance=RequestContext(request))
