@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-12 20:36+0100\n"
+"POT-Creation-Date: 2014-01-18 20:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,35 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: core/forms.py:15
+#: core/forms.py:19
 msgid "First name"
 msgstr ""
 
-#: core/forms.py:16
+#: core/forms.py:20
 msgid "Last name"
 msgstr ""
 
-#: core/forms.py:17 templates/account/profile.html:45
+#: core/forms.py:21 templates/account/profile.html:45
 msgid "Date of birth"
 msgstr ""
 
-#: core/forms.py:18 templates/account/profile.html:65
+#: core/forms.py:22 templates/account/profile.html:65
 msgid "Street address"
 msgstr ""
 
-#: core/forms.py:19 templates/account/profile.html:75
+#: core/forms.py:23 templates/account/profile.html:75
 msgid "Postal code"
 msgstr ""
 
-#: core/forms.py:20 templates/account/profile.html:85
+#: core/forms.py:24 templates/account/profile.html:85
 msgid "Country"
 msgstr ""
 
-#: core/forms.py:21 templates/account/profile.html:55
+#: core/forms.py:25 templates/account/profile.html:55
 msgid "Gender"
 msgstr ""
 
-#: core/forms.py:22
+#: core/forms.py:26
 msgid "Phone"
 msgstr ""
 
@@ -57,51 +57,89 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
-#: core/models.py:30 core/models.py:43
+#: core/models.py:48 core/models.py:85 templates/organization/admin.html:32
+#: templates/organization/admin.html:77
 msgid "Name"
 msgstr ""
 
-#: core/models.py:31
+#: core/models.py:49 templates/base.html:39
+#: templates/organization/admin.html:16
 msgid "About"
 msgstr ""
 
-#: core/models.py:32 core/models.py:44
+#: core/models.py:50 core/models.py:86
 msgid "Owner"
 msgstr ""
 
-#: core/models.py:38 core/models.py:42
+#: core/models.py:51 core/models.py:87
+msgid "Activated"
+msgstr ""
+
+#: core/models.py:52 core/models.py:88
+msgid "URL-slug"
+msgstr ""
+
+#: core/models.py:53 core/models.py:89
+msgid "External website"
+msgstr ""
+
+#: core/models.py:79 core/models.py:84
 msgid "Organization"
 msgstr ""
 
-#: core/models.py:39
+#: core/models.py:80 templates/base.html:30 templates/account/profile.html:124
 msgid "Organizations"
 msgstr ""
 
-#: core/models.py:50
+#: core/models.py:90
+msgid "Start time"
+msgstr ""
+
+#: core/models.py:91
+msgid "End time"
+msgstr ""
+
+#: core/models.py:99
 msgid "Event"
 msgstr ""
 
-#: core/models.py:51
+#: core/models.py:100 templates/organization/admin.html:70
 msgid "Events"
 msgstr ""
 
-#: templates/base.html:30
+#: core/views.py:52
+msgid "Created event!"
+msgstr ""
+
+#: templates/403.html:8
+msgid "Access denied"
+msgstr ""
+
+#: templates/403.html:9
+msgid "You don't have permission to do whatever you tried doing."
+msgstr ""
+
+#: templates/base.html:47
+msgid "Admin"
+msgstr ""
+
+#: templates/base.html:50
 msgid "Log out"
 msgstr ""
 
-#: templates/base.html:34
+#: templates/base.html:54
 msgid "Log in with Facebook"
 msgstr ""
 
-#: templates/base.html:35
+#: templates/base.html:55
 msgid "Sign up"
 msgstr ""
 
-#: templates/base.html:36
+#: templates/base.html:56
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:46
+#: templates/base.html:66
 msgid ""
 "This site is a develoment or testing site. Please do not use this site if "
 "you are not a developer or tester. Bugs and traps may be inside."
@@ -177,7 +215,7 @@ msgstr ""
 msgid "Are you sure you want to sign out?"
 msgstr ""
 
-#: templates/account/profile.html:20
+#: templates/account/profile.html:20 templates/organization/admin.html:31
 msgid "Username"
 msgstr ""
 
@@ -185,7 +223,7 @@ msgstr ""
 msgid "Full name"
 msgstr ""
 
-#: templates/account/profile.html:36
+#: templates/account/profile.html:36 templates/organization/admin.html:33
 msgid "Email"
 msgstr ""
 
@@ -250,6 +288,46 @@ msgstr ""
 msgid ""
 "<strong>Note:</strong> you can still <a href=\"%(email_url)s\">change your e-"
 "mail address</a>."
+msgstr ""
+
+#: templates/organization/admin.html:9
+msgid "Administration"
+msgstr ""
+
+#: templates/organization/admin.html:26
+msgid "Owners"
+msgstr ""
+
+#: templates/organization/admin.html:60
+msgid "Logo/Image"
+msgstr ""
+
+#: templates/organization/admin.html:76
+msgid "Active"
+msgstr ""
+
+#: templates/organization/admin.html:84
+msgid "Yes,No"
+msgstr ""
+
+#: templates/organization/admin.html:95
+msgid "No events created yet"
+msgstr ""
+
+#: templates/organization/event_create.html:11
+msgid "Create event"
+msgstr ""
+
+#: templates/organization/event_create.html:17
+msgid "Submit"
+msgstr ""
+
+#: templates/organization/front.html:13
+msgid "Visit website"
+msgstr ""
+
+#: templates/organization/front.html:16
+msgid "Administrate organization"
 msgstr ""
 
 #: templates/socialaccount/signup.html:13
