@@ -75,6 +75,10 @@ class Event (models.Model):
 	organization = models.ForeignKey(Organization, verbose_name=_('Organization'))
 	name = models.CharField (max_length=64, verbose_name=_('Name'))
 	owner = models.ForeignKey (Group, verbose_name=_('Owner'))
+	is_active = models.BooleanField (default=False)
+	urlslug = models.SlugField (unique=True, verbose_name=_('URL-slug'))
+	externalurl = models.URLField (null=True)
+
 
 
 	def __unicode__ (self):
