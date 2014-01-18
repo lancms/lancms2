@@ -75,6 +75,7 @@
 						<tr>
 							<th>{% trans "Active" %}</th>
 							<th>{% trans "Name" %}</th>
+							<th>{% trans "Owners" %}
 						</tr>
 					</thead>
 					<tbody>
@@ -85,6 +86,14 @@
 								</td>
 								<td>
 									{{event.name}}
+								</td>
+								<td>
+										<a class="fa fa-plus-square-o pull-right" href="#FIXME"></a>
+									<ul>
+									{% for owner in event.owners %}
+										<li>{{owner.username}} <a class="fa fa-minus-square-o" href="#FIXME"></a></li>
+									{% endfor %}
+									</ul>
 								</td>
 							</tr>
 						{% endfor %}
