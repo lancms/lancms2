@@ -102,6 +102,8 @@ STATIC_ROOT = os.path.join (BASE_DIR, 'static/')
 TEMPLATE_DIRS = os.path.join (BASE_DIR, 'templates/')
 
 LOGIN_REDIRECT_URL = 'core.views.selfprofile'
+LOGOUT_URL = 'allauth.account.views.logout'
+LOGIN_URL = 'allauth.account.views.login'
 
 ##### example on how to add to the default settings
 # import django.conf.global_settings as DEFAULT_SETTINGS
