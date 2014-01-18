@@ -64,6 +64,40 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-xs-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					{% trans "Events" %} <a class="fa fa-plus-square-o pull-right" href="#FIXME"></a>
+				</div>
+				{% if organization.events %}
+				<table class="table">
+					<thead>
+						<tr>
+							<th>{% trans "Activated" %}</th>
+							<th>{% trans "Name" %}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for event in organization.events %}
+							<tr>
+								<td>
+									{{event.is_active}}
+								</td>
+								<td>
+									{{event.name}}
+									<a class="fa fa-minus-square-o pull-right" href="#FIXME"></a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				{% else %}
+				<div class="panel-body">
+					<p>{% trans "No events created yet" %}</p>
+				</div>
+				{% endif %}
+			</div>
+		</div>
 	</div>
 </div>
 
