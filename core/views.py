@@ -8,11 +8,17 @@ from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 
 
-from core.models import Organization
+from core.models import Organization, Event
 from core.forms import EventForm
 
 def index (request):
 	c = {}
+
+	events = Event.objects.filter(is_active=True)
+	if events.count () == 1:
+		c['event_featured'] = events[0]
+	else:
+		c['events'] = events
 	return prtr ('index.html', c, request) 
 
 @login_required()
