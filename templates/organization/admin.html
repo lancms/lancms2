@@ -73,7 +73,7 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th>{% trans "Activated" %}</th>
+							<th>{% trans "Active" %}</th>
 							<th>{% trans "Name" %}</th>
 						</tr>
 					</thead>
@@ -81,13 +81,7 @@
 						{% for event in organization.events %}
 							<tr>
 								<td>
-									{% if event.is_active %}
-										<a href="#FIXME" class="glyphicon glyphicon-ok-circle">
-									{% else %}
-										<a href="#FIXME" class="glyphicon glyphicon-remove-circle">
-									{% endif %}
 									{{event.is_active|yesno:_("Yes,No")}}
-									</a>
 								</td>
 								<td>
 									{{event.name}}
