@@ -45,6 +45,7 @@ INSTALLED_APPS = (
 	 'debug_toolbar', # for DEBUG
 	 'django_countries',
 	 'south',
+	 'bootstrapform',
 )
 
 MIDDLEWARE_CLASSES = (

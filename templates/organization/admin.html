@@ -67,7 +67,7 @@
 		<div class="col-xs-8">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					{% trans "Events" %} <a class="fa fa-plus-square-o pull-right" href="#FIXME"></a>
+					{% trans "Events" %} <a class="fa fa-plus-square-o pull-right" href="{% url 'organization_event_create' organization.urlslug %}"></a>
 				</div>
 				{% if organization.events %}
 				<table class="table">

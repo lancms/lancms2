@@ -1,14 +1,17 @@
 # -*- coding: utf-8
 
-from django.utils.translation import ugettext as _
+import datetime
 
-### Forms
 from django import forms
 from django.forms.extras.widgets import SelectDateWidget
-import datetime
-from core.models import UserProfile, CHOICES_GENDER
+from django.utils.translation import ugettext as _
 
 from django_countries import countries
+
+from core.models import Event
+from core.models import UserProfile, CHOICES_GENDER
+
+
 
 class SignupForm (forms.Form):
 	# FIXME: Not sure if hardcoding a copy of the d.c.auth.m.User and core.models.UserProfile is the right thing to do, but I'll do it for now:
@@ -50,3 +53,9 @@ class SignupForm (forms.Form):
 
 
 		super (SignupForm, self).__init__ (*args, **kwargs)
+
+
+class EventForm (forms.ModelForm):
+	class Meta:
+		model = Event
+		fields = ['name', 'urlslug', 'externalurl', 'startdatetime', 'enddatetime']

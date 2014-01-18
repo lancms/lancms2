@@ -7,6 +7,7 @@ from django.core.exceptions import PermissionDenied
 
 
 from core.models import Organization
+from core.forms import EventForm
 
 def index (request):
 	c = {}
@@ -32,3 +33,20 @@ def organization_admin (request, slug):
     
 	c = {'organization': org}
 	return prtr ('organization/admin.html', c, request) 
+
+
+@login_required()
+def organization_event_create (request, slug):
+	org = get_object_or_404(Organization, urlslug=slug)
+	c = {'organization': org}
+
+	if not org.user_is_owner(request.user):
+		raise PermissionDenied
+	
+	if request.POST:
+		return prtr ('organization_front.html', c, request) 
+
+	else:
+		c['form'] = EventForm
+		return prtr ('organization/event_create.html', c, request) 
+
