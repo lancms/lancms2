@@ -63,6 +63,9 @@ class Organization (models.Model):
 		return user.groups.filter(pk=self.owner.pk).exists()
 
 
+	def owners (self):
+		return self.owner.user_set.filter(is_active=True)
+
 	class Meta:
 		verbose_name = _('Organization')
 		verbose_name_plural = _('Organizations')
