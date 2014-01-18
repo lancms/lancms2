@@ -90,6 +90,10 @@ class Event (models.Model):
 	externalurl = models.URLField (null=True, verbose_name=_('External website'))
 	startdatetime = models.DateTimeField(verbose_name=_('Start time'), help_text='YYYY-MM-DD HH:MM') # FIXME: help_text should be replaced by using a proper datetime widget for this
 	enddatetime = models.DateTimeField(verbose_name=_('End time'), help_text='YYYY-MM-DD HH:MM') # FIXME: help_text should be replaced by using a proper datetime widget for this
+	
+	
+	def get_absolute_url (self):
+		return reverse ('event_front', args=[self.organization.urlslug, self.urlslug])
 
 
 	def __unicode__ (self):
