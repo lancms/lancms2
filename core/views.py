@@ -3,7 +3,7 @@ from core.common import prtr
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseForbidden
+from django.core.exceptions import PermissionDenied
 
 
 from core.models import Organization
@@ -28,7 +28,7 @@ def organization_admin (request, slug):
 	org = get_object_or_404(Organization, urlslug=slug)
 
 	if not org.user_is_owner(request.user):
-		return HttpResponseForbidden
+		raise PermissionDenied
     
 	c = {'organization': org}
 	return prtr ('organization.html', c, request) 
