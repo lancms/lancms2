@@ -1,11 +1,9 @@
 # -*- coding: utf-8
 
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
-
-### Models
 from django.db import models
-
 
 from django.contrib.auth.models import User, Group
 from django_countries.fields import CountryField
@@ -72,6 +70,10 @@ class Organization (models.Model):
 		# shows all events, so that org owners can activate/deactivate?
 		return self.event_set.all ()
 
+	
+	def get_absolute_url (self):
+		return reverse ('organization_front', args=[self.urlslug])
+	
 
 	class Meta:
 		verbose_name = _('Organization')
