@@ -20,7 +20,7 @@ def selfprofile (request):
 
 def organization_front (request, slug):
 	c = {'organization': get_object_or_404(Organization, urlslug=slug)}
-	return prtr ('organization.html', c, request) 
+	return prtr ('organization/front.html', c, request) 
 
 
 @login_required()
@@ -31,4 +31,4 @@ def organization_admin (request, slug):
 		raise PermissionDenied
     
 	c = {'organization': org}
-	return prtr ('organization_admin.html', c, request) 
+	return prtr ('organization/admin.html', c, request) 
