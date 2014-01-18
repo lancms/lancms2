@@ -118,7 +118,7 @@ def _migrate ():
 
 
 def _restart_webserver ():
-	# FIXME: this could be to Debian specific for real reuse. I don't know, haven't used anything but Debian in a long while. :-)
+	# FIXME: this could be too Debian specific for real reuse. I don't know, haven't used anything but Debian in a long while. :-)
 	sudo ('/usr/sbin/service apache2 restart', shell=False)
 	print (green ('Restarted apache2'))
 
