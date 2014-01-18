@@ -10,10 +10,9 @@ class OrganizationAdmin (admin.ModelAdmin):
 	readonly_fields = ('owner', )
 	
 	def save_model(self, request, obj, form, change):
-		g = Group(name=obj.name + '_admin')
+		g = Group(name='org_' + obj.urlslug + '_owners')
 		g.save()
-		g.user_set.add(request.user)
-		
+#		g.user_set.add(request.user)
 		obj.owner = g		
 		obj.save()
 	
@@ -21,11 +20,10 @@ class EventAdmin (admin.ModelAdmin):
 	list_display = ('name',)
 	readonly_fields = ('owner', )
 	
-	def save_model(self, request, obj, form, change):
-		g = Group(name=obj.name + '_admin')
+	def save_model (self, request, obj, form, change):
+		g = Group(name='event_' + obj.urlslug + '_owners')
 		g.save()
-		g.user_set.add(request.user)
-		
+#		g.user_set.add(request.user)
 		obj.owner = g		
 		obj.save()
 
