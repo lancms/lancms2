@@ -59,7 +59,7 @@ class SignupForm (forms.Form):
 class EventForm (forms.ModelForm):
 	class Meta:
 		model = Event
-		fields = ['name', 'urlslug', 'externalurl', 'startdatetime', 'enddatetime']
+		fields = ['name', 'about', 'urlslug', 'externalurl', 'startdatetime', 'enddatetime']
 	
 	def save (self, org, *args, **kwargs):
 		group = Group(name='event_' + self.instance.urlslug + '_owners')
