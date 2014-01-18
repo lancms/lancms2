@@ -8,3 +8,4 @@ python3-openid==3.0.3
 requests==2.2.0
 requests-oauthlib==0.4.0
 sqlparse==0.1.10
+django-bootstrap-form

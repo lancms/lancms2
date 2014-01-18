@@ -9,6 +9,7 @@ urlpatterns = patterns('',
 	
 	url ('^(?P<slug>[\w-]+)/$', 'core.views.organization_front', name='organization_front'),
 	url ('^(?P<slug>[\w-]+)/\+admin/$', 'core.views.organization_admin', name='organization_admin'),
+	url ('^(?P<slug>[\w-]+)/\+admin/event/$', 'core.views.organization_event_create', name='organization_event_create'),
 	
 	
 	url ('^\+accounts/profile/$', 'core.views.selfprofile', name='account_profile'),

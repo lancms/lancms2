@@ -64,6 +64,39 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-xs-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					{% trans "Events" %} <a class="fa fa-plus-square-o pull-right" href="{% url 'organization_event_create' organization.urlslug %}"></a>
+				</div>
+				{% if organization.events %}
+				<table class="table">
+					<thead>
+						<tr>
+							<th>{% trans "Active" %}</th>
+							<th>{% trans "Name" %}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for event in organization.events %}
+							<tr>
+								<td>
+									{{event.is_active|yesno:_("Yes,No")}}
+								</td>
+								<td>
+									{{event.name}}
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				{% else %}
+				<div class="panel-body">
+					<p>{% trans "No events created yet" %}</p>
+				</div>
+				{% endif %}
+			</div>
+		</div>
 	</div>
 </div>
 

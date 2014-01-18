@@ -1,11 +1,9 @@
 # -*- coding: utf-8
 
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
-
-### Models
 from django.db import models
-
 
 from django.contrib.auth.models import User, Group
 from django_countries.fields import CountryField
@@ -50,13 +48,14 @@ class Organization (models.Model):
 	name = models.CharField (max_length=64, verbose_name=_('Name'))
 	about = models.TextField (null=True, verbose_name=_('About'))
 	owner = models.ForeignKey (Group,null=True, verbose_name=_('Owner'))
-	is_active = models.BooleanField (default=False)
-	urlslug = models.SlugField (verbose_name=_('URL-slug'))
-	externalurl = models.URLField (null=True)
+	is_active = models.BooleanField (default=False, verbose_name=_('Activated'))
+	urlslug = models.SlugField (unique=True, verbose_name=_('URL-slug'))
+	externalurl = models.URLField (null=True, verbose_name=_('External website'))
 
 
 	def __unicode__ (self):
 		return self.name
+
 
 	def user_is_owner (self, user):
 		# FIXME: could I have dropped pk? Not sure what else to filter on... -- mboehn
@@ -65,6 +64,16 @@ class Organization (models.Model):
 
 	def owners (self):
 		return self.owner.user_set.filter(is_active=True)
+
+
+	def events (self):
+		# shows all events, so that org owners can activate/deactivate?
+		return self.event_set.all ()
+
+	
+	def get_absolute_url (self):
+		return reverse ('organization_front', args=[self.urlslug])
+	
 
 	class Meta:
 		verbose_name = _('Organization')
@@ -75,6 +84,11 @@ class Event (models.Model):
 	organization = models.ForeignKey(Organization, verbose_name=_('Organization'))
 	name = models.CharField (max_length=64, verbose_name=_('Name'))
 	owner = models.ForeignKey (Group, verbose_name=_('Owner'))
+	is_active = models.BooleanField (default=False, verbose_name=_('Activated'))
+	urlslug = models.SlugField (unique=True, verbose_name=_('URL-slug'))
+	externalurl = models.URLField (null=True, verbose_name=_('External website'))
+	startdatetime = models.DateTimeField(verbose_name=_('Start time'), help_text='YYYY-MM-DD HH:MM') # FIXME: help_text should be replaced by using a proper datetime widget for this
+	enddatetime = models.DateTimeField(verbose_name=_('End time'), help_text='YYYY-MM-DD HH:MM') # FIXME: help_text should be replaced by using a proper datetime widget for this
 
 
 	def __unicode__ (self):
