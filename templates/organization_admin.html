@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load owns_org %}
+
+{% block content %}
+
+<div class="container">
+	<div class="page-header">
+		<h1>{{organization.name}} <small>{% trans "Administration" %}</small></h1>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					{% trans "About" %}
+				</div>
+				<div class="panel-body">
+					{{organization.about}}
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					{% trans "Owners" %}
+				</div>
+				<div class="panel-body">
+					{{organization.owners}}
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					{% trans "Logo/Image" %}
+				</div>
+				<div class="panel-body">
+					{{organization.image}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock%}

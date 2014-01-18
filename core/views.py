@@ -31,4 +31,4 @@ def organization_admin (request, slug):
 		raise PermissionDenied
     
 	c = {'organization': org}
-	return prtr ('organization.html', c, request) 
+	return prtr ('organization_admin.html', c, request) 
