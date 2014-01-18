@@ -81,11 +81,16 @@
 						{% for event in organization.events %}
 							<tr>
 								<td>
-									{{event.is_active}}
+									{% if event.is_active %}
+										<a href="#FIXME" class="glyphicon glyphicon-ok-circle">
+									{% else %}
+										<a href="#FIXME" class="glyphicon glyphicon-remove-circle">
+									{% endif %}
+									{{event.is_active|yesno:_("Yes,No")}}
+									</a>
 								</td>
 								<td>
 									{{event.name}}
-									<a class="fa fa-minus-square-o pull-right" href="#FIXME"></a>
 								</td>
 							</tr>
 						{% endfor %}

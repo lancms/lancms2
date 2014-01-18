@@ -58,6 +58,7 @@ class Organization (models.Model):
 	def __unicode__ (self):
 		return self.name
 
+
 	def user_is_owner (self, user):
 		# FIXME: could I have dropped pk? Not sure what else to filter on... -- mboehn
 		return user.groups.filter(pk=self.owner.pk).exists()
@@ -65,6 +66,12 @@ class Organization (models.Model):
 
 	def owners (self):
 		return self.owner.user_set.filter(is_active=True)
+
+
+	def events (self):
+		# shows all events, so that org owners can activate/deactivate?
+		return self.event_set.all ()
+
 
 	class Meta:
 		verbose_name = _('Organization')
