@@ -10,22 +10,30 @@ class OrganizationAdmin (admin.ModelAdmin):
 	readonly_fields = ('owner', )
 	
 	def save_model(self, request, obj, form, change):
-		g = Group(name='org_' + obj.urlslug + '_owners')
-		g.save()
-#		g.user_set.add(request.user)
-		obj.owner = g		
-		obj.save()
+		gname = 'org_' + obj.urlslug + '_owners'
+		try:
+			if not Group.objects.filter(name=gname).exists():
+				g = Group(name=gname)
+				g.save()
+				obj.owner = g		
+				obj.save()
+		except:
+			pass
 	
 class EventAdmin (admin.ModelAdmin):
 	list_display = ('name',)
 	readonly_fields = ('owner', )
 	
 	def save_model (self, request, obj, form, change):
-		g = Group(name='event_' + obj.urlslug + '_owners')
-		g.save()
-#		g.user_set.add(request.user)
-		obj.owner = g		
-		obj.save()
+		gname = 'event_' + obj.urlslug + '_owners'
+		try:
+			if not Group.objects.filter(name=gname).exists():
+				g = Group(name=gname)
+				g.save()
+				obj.owner = g		
+				obj.save()
+		except:
+			pass
 
 admin.site.register (Organization, OrganizationAdmin)
 admin.site.register (Event, EventAdmin)
