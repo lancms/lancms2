@@ -1,9 +1,11 @@
 from core.common import prtr
 
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
 from django.core.exceptions import PermissionDenied
+from django.contrib import messages
 
 
 from core.models import Organization
@@ -47,6 +49,7 @@ def organization_event_create (request, slug):
 		form = EventForm (request.POST)
 		if form.is_valid ():
 			form.save (org=org)
+			messages.add_message (request, messages.SUCCESS, _('Created event!'))
 			return redirect(org)
 		else:
 			form = EventForm (request.POST)
