@@ -1,6 +1,6 @@
 from core.common import prtr
 
-
+from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
@@ -43,10 +43,16 @@ def organization_event_create (request, slug):
 	if not org.user_is_owner(request.user):
 		raise PermissionDenied
 	
-	if request.POST:
-		return prtr ('organization_front.html', c, request) 
-
+	if request.method == 'POST':
+		form = EventForm (request.POST)
+		if form.is_valid ():
+			form.save (org=org)
+			return HttpRedirect(org)
+		else:
+			form = EventForm (request.POST)
 	else:
-		c['form'] = EventForm
-		return prtr ('organization/event_create.html', c, request) 
+		form = EventForm ()
+	
+	c['form'] = form
+	return prtr ('organization/event_create.html', c, request) 
 

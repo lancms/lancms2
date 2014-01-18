@@ -5,6 +5,7 @@ import datetime
 from django import forms
 from django.forms.extras.widgets import SelectDateWidget
 from django.utils.translation import ugettext as _
+from django.contrib.auth.models import Group
 
 from django_countries import countries
 
@@ -59,3 +60,13 @@ class EventForm (forms.ModelForm):
 	class Meta:
 		model = Event
 		fields = ['name', 'urlslug', 'externalurl', 'startdatetime', 'enddatetime']
+	
+	def save (self, org, *args, **kwargs):
+		group = Group(name='event_' + self.instance.urlslug + '_owners')
+		group.save ()
+
+		self.instance.organization = org
+		self.instance.owner = group
+
+		post = super (EventForm, self).save (*args, **kwargs)
+		post.save()
