@@ -20,7 +20,29 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					{% trans "Logo/Image" %}<a class="fa fa-edit pull-right" href="#FIXME"></a>
+				</div>
+				<div class="panel-body">
+					{{organization.image}}
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					{% trans "Website" %}<a class="fa fa-edit pull-right" href="#FIXME"></a>
+				</div>
+				<div class="panel-body">
+					{{organization.externalurl}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					{% trans "Owners" %} <a class="fa fa-plus-square-o pull-right" href="#FIXME"></a>
@@ -54,17 +76,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-xs-4">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					{% trans "Logo/Image" %}<a class="fa fa-edit pull-right" href="#FIXME"></a>
-				</div>
-				<div class="panel-body">
-					{{organization.image}}
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-8">
+		<div class="col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					{% trans "Events" %} <a class="fa fa-plus-square-o pull-right" href="{% url 'organization_event_create' organization.urlslug %}"></a>
@@ -75,17 +87,23 @@
 						<tr>
 							<th>{% trans "Active" %}</th>
 							<th>{% trans "Name" %}</th>
-							<th>{% trans "Owners" %}
+							<th>{% trans "Date" %}</th>
+							<th>{% trans "Owners" %}</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for event in organization.events %}
 							<tr>
 								<td>
-									{{event.is_active|yesno:_("Yes,No")}}
+									<form action="" method="post">
+										{{event.is_active|yesno:_("Yes,No")}}
+									</form>
 								</td>
 								<td>
 									{{event.name}}
+								</td>
+								<td>
+									{{event.startdatetime|date:"d.m.y H:i"}} - {{event.enddatetime|date:"d.m.y H:i"}}
 								</td>
 								<td>
 										<a class="fa fa-plus-square-o pull-right" href="#FIXME"></a>
@@ -108,6 +126,5 @@
 		</div>
 	</div>
 </div>
-
 
 {% endblock%}
