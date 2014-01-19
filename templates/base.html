@@ -1,12 +1,15 @@
 {% load socialaccount %}
 {% load i18n %}
 {% load owns_org %}
+{% load bootstrap_alert_type %}
 
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
 		<style>
 			/* Move down content because we have a fixed navbar that is 50px tall */
 			body {
@@ -67,7 +70,8 @@
 		{% endif %}
 
 		{% for message in messages %}
-			<div class="alert alert-{{message.tags}} alert-dismissable">
+			{% bootstrap_alert_type message.tags as alert_tag %}
+			<div class="alert alert-{{alert_tag}} alert-dismissable">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="True">&times;</button>
 				{{message}}
 			</div>
@@ -84,13 +88,16 @@
 		</div> <!-- /container -->
 
 
-		<!-- Bootstrap core JavaScript
-		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+		
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		
+		
+
 		{% block extra-bottom %}
 		{% endblock %}
 	</body>
