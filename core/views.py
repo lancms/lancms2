@@ -8,7 +8,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 
 from core.models import Organization, Event
-from core.forms import EventForm
+from core.forms import EventForm, EventOwnerAddForm
 
 
 def index (request):
@@ -55,8 +55,9 @@ def organization_admin (request, slug):
 
 @login_required()
 def organization_event_create (request, slug):
+	c = {}
 	org = get_object_or_404(Organization, urlslug=slug)
-	c = {'organization': org}
+	c['organization'] = org
 
 	if not org.user_is_owner(request.user):
 		raise PermissionDenied
@@ -76,10 +77,44 @@ def organization_event_create (request, slug):
 	return prtr ('organization/event_create.html', c, request) 
 
 
+@login_required()
+def event_owner_add (request, orgslug, eventslug):
+	c = {}
+	event = get_object_or_404(Event, urlslug=eventslug)
+	org = event.organization
+	c['organization'] = org
+	c['event'] = event
+	
+	if not org.user_is_owner(request.user):
+		raise PermissionDenied
+	
+	if request.method == 'POST':
+		form = EventOwnerAddForm (request.POST)
+		if form.is_valid ():
+			if form.user_exists ():
+				if form.user_is_new (event):
+					form.save (event)
+					messages.add_message (request, messages.SUCCESS, _('Added event owner!'))
+					return redirect(org)
+				else:
+					form = EventOwnerAddForm (request.POST)
+					messages.add_message (request, messages.ERROR, _('User is already event owner!'))
+			else:
+				form = EventOwnerAddForm (request.POST)
+				messages.add_message (request, messages.ERROR, _("User doesn't exist"))	
+		else:
+			form = EventOwnerAddForm (request.POST)
+	else:
+		form = EventOwnerAddForm ()
+	
+	c['form'] = form
+	return prtr ('event/owner_add.html', c, request) 
+
+
 def event_front (request, orgslug, eventslug):
 	c = {}
-	org = get_object_or_404(Organization, urlslug=orgslug)
 	event = get_object_or_404(Event, urlslug=eventslug)
+	org = event.organization
 	c['organization'] = org
 	c['event'] = event
 	

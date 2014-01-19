@@ -5,7 +5,8 @@ import datetime
 from django import forms
 from django.forms.extras.widgets import SelectDateWidget
 from django.utils.translation import ugettext as _
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, User
+from django.contrib import messages
 
 from django_countries import countries
 
@@ -70,3 +71,31 @@ class EventForm (forms.ModelForm):
 
 		post = super (EventForm, self).save (*args, **kwargs)
 		post.save()
+
+
+class EventOwnerAddForm (forms.Form):
+	username = forms.CharField (max_length=30, label=_('Username'))
+	
+	
+	def user_exists (self):
+		try:
+			print (self.cleaned_data['username'])
+			user = User.objects.get(username=self.cleaned_data['username'])
+			return True
+		except:
+			return False
+
+
+	def user_is_new (self, event):
+		user = User.objects.get(username=self.cleaned_data['username'])
+		if user.groups.filter(name=event.organization.name).exists():
+			# FIXME: not sure if I should return redirect from here or if should return to the view before doing that. -- mboehn
+			return False
+		else:
+			return True
+
+
+	def save (self, event):
+		user = User.objects.get(username=self.cleaned_data['username'])
+		event.owner.user_set.add (user)
+		

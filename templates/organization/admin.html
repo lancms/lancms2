@@ -106,7 +106,7 @@
 									{{event.startdatetime|date:"d.m.y H:i"}} - {{event.enddatetime|date:"d.m.y H:i"}}
 								</td>
 								<td>
-										<a class="fa fa-plus-square-o pull-right" href="#FIXME"></a>
+										<a class="fa fa-plus-square-o pull-right" href="{% url 'event_owner_add' organization.urlslug event.urlslug %}"></a>
 									<ul>
 									{% for owner in event.owners %}
 										<li>{{owner.username}} <a class="fa fa-minus-square-o" href="#FIXME"></a></li>
