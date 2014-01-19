@@ -94,6 +94,10 @@ class Event (models.Model):
 	
 	def get_absolute_url (self):
 		return reverse ('event_front', args=[self.organization.urlslug, self.urlslug])
+	
+	
+	def owners (self):
+		return self.owner.user_set.filter(is_active=True)
 
 
 	def __unicode__ (self):
