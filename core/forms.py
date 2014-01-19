@@ -88,7 +88,7 @@ class EventOwnerAddForm (forms.Form):
 
 	def user_is_new (self, event):
 		user = User.objects.get(username=self.cleaned_data['username'])
-		if user.groups.filter(name=event.organization.name).exists():
+		if user.groups.filter(name=event.owner.name).exists():
 			# FIXME: not sure if I should return redirect from here or if should return to the view before doing that. -- mboehn
 			return False
 		else:
