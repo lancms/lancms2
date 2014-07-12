@@ -19,3 +19,5 @@ Main features that needs to be implemented:
 Features that should be implemted
 * Kiosk
 * Compo
+* Membership separate from tickets, and ticketprices for members and non-members
+* Invoicing of membership
