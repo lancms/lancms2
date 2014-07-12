@@ -83,12 +83,21 @@ class Organization (models.Model):
 class Event (models.Model):
 	organization = models.ForeignKey(Organization, verbose_name=_('Organization'))
 	name = models.CharField (max_length=64, verbose_name=_('Name'))
+	about = models.TextField (null=True, verbose_name=_('About'))
 	owner = models.ForeignKey (Group, verbose_name=_('Owner'))
 	is_active = models.BooleanField (default=False, verbose_name=_('Activated'))
 	urlslug = models.SlugField (unique=True, verbose_name=_('URL-slug'))
 	externalurl = models.URLField (null=True, verbose_name=_('External website'))
 	startdatetime = models.DateTimeField(verbose_name=_('Start time'), help_text='YYYY-MM-DD HH:MM') # FIXME: help_text should be replaced by using a proper datetime widget for this
 	enddatetime = models.DateTimeField(verbose_name=_('End time'), help_text='YYYY-MM-DD HH:MM') # FIXME: help_text should be replaced by using a proper datetime widget for this
+	
+	
+	def get_absolute_url (self):
+		return reverse ('event_front', args=[self.organization.urlslug, self.urlslug])
+	
+	
+	def owners (self):
+		return self.owner.user_set.filter(is_active=True)
 
 
 	def __unicode__ (self):
