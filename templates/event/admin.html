@@ -103,7 +103,31 @@
 					{% trans "Event tickets" %} <a class="fa fa-edit pull-right" href="#FIXME"></a>
 				</div>
 				<div class="panel-body">
-					FIXME
+					<table class="table">
+					<thead>
+						<tr>
+							<th>{% trans "Ticketname" %}</th>
+							<th>{% trans "For sale" %}</th>
+							<th>{% trans "Reserved" %}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for ticket in tickettypes %}
+							<tr>
+								<td>
+									{{ticket.name}}
+								</td>
+								<td>
+									x
+								</td>
+								<td>
+									y
+									<a class="fa fa-minus-square-o pull-right" href="#FIXME"></a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

@@ -46,6 +46,7 @@ INSTALLED_APPS = (
 	 'django_countries',
 	 'south',
 	 'bootstrapform',
+	 'ticket',
 )
 
 MIDDLEWARE_CLASSES = (

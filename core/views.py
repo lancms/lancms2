@@ -8,6 +8,7 @@ from django.core.exceptions import PermissionDenied
 from django.contrib import messages
 
 from core.models import Organization, Event
+from ticket.models import TicketType
 from core.forms import EventForm, EventOwnerAddForm
 
 
@@ -59,8 +60,11 @@ def event_admin (request, orgslug, eventslug):
 	c = {}
 	event = get_object_or_404(Event, urlslug=eventslug)
 	org = event.organization
+	tickettypes = list(TicketType.objects.filter(event=event.pk))
+	
 	c['organization'] = org
 	c['event'] = event
+	c['tickettypes'] = tickettypes
 
 	if not org.user_is_owner(request.user):
 		raise PermissionDenied
