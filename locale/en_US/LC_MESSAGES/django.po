@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-22 16:42+0200\n"
+"POT-Creation-Date: 2014-07-22 17:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgid "Phone"
 msgstr ""
 
 #: core/forms.py:77 templates/account/profile.html:20
-#: templates/organization/admin.html:53
+#: templates/event/admin.html:53 templates/organization/admin.html:53
 msgid "Username"
 msgstr ""
 
@@ -62,13 +62,13 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
-#: core/models.py:48 core/models.py:85 templates/organization/admin.html:54
-#: templates/organization/admin.html:89
+#: core/models.py:48 core/models.py:85 templates/event/admin.html:54
+#: templates/organization/admin.html:54 templates/organization/admin.html:89
 msgid "Name"
 msgstr ""
 
 #: core/models.py:49 core/models.py:86 templates/base.html:42
-#: templates/organization/admin.html:16
+#: templates/event/admin.html:16 templates/organization/admin.html:16
 msgid "About"
 msgstr ""
 
@@ -112,19 +112,19 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
-#: core/views.py:69
+#: core/views.py:84
 msgid "Created event!"
 msgstr ""
 
-#: core/views.py:97
+#: core/views.py:112
 msgid "Added event owner!"
 msgstr ""
 
-#: core/views.py:101
+#: core/views.py:116
 msgid "User is already event owner!"
 msgstr ""
 
-#: core/views.py:104
+#: core/views.py:119
 msgid "User doesn't exist"
 msgstr ""
 
@@ -244,7 +244,8 @@ msgstr ""
 msgid "Full name"
 msgstr ""
 
-#: templates/account/profile.html:36 templates/organization/admin.html:55
+#: templates/account/profile.html:36 templates/event/admin.html:55
+#: templates/organization/admin.html:55
 msgid "Email"
 msgstr ""
 
@@ -311,6 +312,47 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
+#: templates/event/admin.html:9 templates/organization/admin.html:9
+msgid "Administration"
+msgstr ""
+
+#: templates/event/admin.html:26 templates/organization/admin.html:26
+msgid "Logo/Image"
+msgstr ""
+
+#: templates/event/admin.html:36 templates/organization/admin.html:36
+msgid "Website"
+msgstr ""
+
+#: templates/event/admin.html:48 templates/organization/admin.html:48
+#: templates/organization/admin.html:91
+msgid "Owners"
+msgstr ""
+
+#: templates/event/admin.html:82
+msgid "Event time"
+msgstr ""
+
+#: templates/event/admin.html:85
+msgid "Start time:"
+msgstr ""
+
+#: templates/event/admin.html:86
+msgid "End time:"
+msgstr ""
+
+#: templates/event/admin.html:93
+msgid "Event active"
+msgstr ""
+
+#: templates/event/admin.html:96 templates/organization/admin.html:99
+msgid "Yes,No"
+msgstr ""
+
+#: templates/event/admin.html:103
+msgid "Event tickets"
+msgstr ""
+
 #: templates/event/front.html:11 templates/organization/front.html:13
 msgid "Visit website"
 msgstr ""
@@ -360,32 +402,12 @@ msgstr ""
 msgid "Submit"
 msgstr ""
 
-#: templates/organization/admin.html:9
-msgid "Administration"
-msgstr ""
-
-#: templates/organization/admin.html:26
-msgid "Logo/Image"
-msgstr ""
-
-#: templates/organization/admin.html:36
-msgid "Website"
-msgstr ""
-
-#: templates/organization/admin.html:48 templates/organization/admin.html:91
-msgid "Owners"
-msgstr ""
-
 #: templates/organization/admin.html:88
 msgid "Active"
 msgstr ""
 
 #: templates/organization/admin.html:90
 msgid "Date"
-msgstr ""
-
-#: templates/organization/admin.html:99
-msgid "Yes,No"
 msgstr ""
 
 #: templates/organization/admin.html:122
