@@ -76,8 +76,8 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en' # Use for english text
-#LANGUAGE_CODE = 'nb' # Use for norwegian text
+#LANGUAGE_CODE = 'en' # Use for english text
+LANGUAGE_CODE = 'nb' # Use for norwegian text
 
 LOCALE_PATHS = (
 	os.path.join(BASE_DIR, 'locale'),

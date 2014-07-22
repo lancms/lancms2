@@ -53,6 +53,21 @@ def organization_admin (request, slug):
 	return prtr ('organization/admin.html', c, request) 
 
 
+
+@login_required()
+def event_admin (request, orgslug, eventslug):
+	c = {}
+	event = get_object_or_404(Event, urlslug=eventslug)
+	org = event.organization
+	c['organization'] = org
+	c['event'] = event
+
+	if not org.user_is_owner(request.user):
+		raise PermissionDenied
+
+	return prtr ('event/admin.html', c, request)
+
+
 @login_required()
 def organization_event_create (request, slug):
 	c = {}
