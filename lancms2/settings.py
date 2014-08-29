@@ -47,6 +47,7 @@ INSTALLED_APPS = (
 	 'south',
 	 'bootstrapform',
 	 'ticket',
+	 'crew',
 )
 
 MIDDLEWARE_CLASSES = (
