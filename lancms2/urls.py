@@ -15,6 +15,9 @@ urlpatterns = patterns('',
 	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/$', 'core.views.event_front', name='event_front'),
 	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/\+addowner/$', 'core.views.event_owner_add', name='event_owner_add'),
 	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/\+admin/$', 'core.views.event_admin', name='event_admin'),
+
+	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/\+crews/$', 'core.views.crew_front', name='crew_front'),
+	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/\+crew/(?P<crewid>[\w-]+)$', 'core.views.crew_view', name='crew_view'),
 	
 	url ('^\+accounts/profile/$', 'core.views.selfprofile', name='account_profile'),
 	# allauth:

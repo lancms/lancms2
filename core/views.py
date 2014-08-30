@@ -9,6 +9,7 @@ from django.contrib import messages
 
 from core.models import Organization, Event
 from ticket.models import TicketType
+from crew.models import Crew
 from core.forms import EventForm, EventOwnerAddForm
 
 
@@ -138,3 +139,31 @@ def event_front (request, orgslug, eventslug):
 	c['event'] = event
 	
 	return prtr ('event/front.html', c, request) 
+
+
+def crew_front (request, orgslug, eventslug):
+	c = {}
+	event = get_object_or_404(Event, urlslug=eventslug)
+	org = event.organization
+
+	crews = Crew.objects.filter(event=event.id)
+
+	c['org'] = org
+	c['event'] = event
+	c['crews'] = crews
+
+	return prtr ('crew/front.html', c, request)
+
+
+def crew_view (request, orgslug, eventslug, crewslug):
+	c = {}
+	event = get_object_or_404(Event, urlslug=eventslug)
+	org = event.organization
+
+	crews = Crew.objects.filter(event=event.id)
+
+	c['org'] = org
+	c['event'] = event
+	c['crews'] = crews
+
+	return prtr ('crew/front.html', c, request)

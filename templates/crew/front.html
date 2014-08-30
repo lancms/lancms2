@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="jumbotron">
+<div class="container">
+<h1>{{event.name}}</h1>
+<p>{{event.about}}</p>
+</div>
+</div>
+
+{% if crews %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">{% trans "Crews" %}</div>
+				<div class="panel-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Crew</th>
+								<th>Beskrivelse</th>
+								<th>Antall medlemmer</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for crew in crews %}
+							<tr>
+								<td><a href="/{{org.name}}/{{event.name}}/+crew/{{crew.name}}" title="Vis medlemmer av {{event.name}}">{{crew.name}}</a></td>
+								<td></td>
+								<td></td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+</div>
+{% endif %}
+
+{% endblock %}
