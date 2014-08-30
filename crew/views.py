@@ -32,5 +32,18 @@ def crew_view (request, orgslug, eventslug, crewslug):
 	c['org'] = org
 	c['event'] = event
 	c['crew'] = crew
+	c['ms'] = crew.members()
+	c['numMs'] = crew.numMembers()
 
 	return prtr ('crew/view.html', c, request)
+
+
+def apply_form (request, orgslug, eventslug):
+	c = {}
+	event = get_object_or_404(Event, urlslug=eventslug)
+	org = event.organization
+
+	c['org'] = org
+	c['event'] = event
+
+	return prtr ('crew/apply.html', c, request)

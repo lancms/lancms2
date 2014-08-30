@@ -4,8 +4,9 @@
 {% block content %}
 <div class="jumbotron">
 <div class="container">
-<h1>Members of {{crew.name}}</h1>
-<p>Event {{event.name}}</p>
+<h1>{% trans "Members of" %} {{crew.name}}</h1>
+<p>{{crew.description}}</p>
+<p><a href="/{{org.name}}/{{event.urlslug}}/+crews" title="{% trans "Back to" %} {% trans "crewlist" %}">&laquo; {% trans "Back to" %} {% trans "crewlist" %}</a></p>
 </div>
 </div>
 
@@ -16,22 +17,28 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">{% trans "CrewMembers" %}</div>
 				<div class="panel-body">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Nick</th>
-								<th>Tilgang</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for member in crew.members %}
-							<tr>
-								<td>{{member.user.username}}</td>
-								<td>{{member.access}}</td>
-							</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+					{% if numMs > 0 %}
+						<table class="table">
+							<thead>
+								<tr>
+									<th>{% trans "Nick" %}</th>
+									<th>{% trans "Access" %}</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for member in crew.members %}
+								<tr>
+									<td>{{member.user.username}}</td>
+									<td>{{member.access}}</td>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					{% else %}
+						<div>
+						{% trans "No members in this crew" %}
+						</div>
+					{% endif %}
 				</div>
 			</div>
 		</div>

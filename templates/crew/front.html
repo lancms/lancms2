@@ -4,8 +4,8 @@
 {% block content %}
 <div class="jumbotron">
 <div class="container">
-<h1>{{event.name}}</h1>
-<p>{{event.about}}</p>
+<h1>{% trans "Crews on" %} {{event.name}}</h1>
+<p><a href="/{{org.name}}/{{event.urlslug}}/" class="btn btn-primary" title="{% trans "Back to" %} {{event.name}}">&laquo; {% trans "Back to" %} {{event.name}}</a>&nbsp;<a href="/{{org.name}}/{{event.urlslug}}/+crews/apply" class="btn btn-success" title="{% trans "Apply for crew" %}">Apply for crew</a></p>
 </div>
 </div>
 
@@ -19,9 +19,9 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th>Crew</th>
-								<th>Beskrivelse</th>
-								<th>Antall medlemmer</th>
+								<th>{% trans "Name" %}</th>
+								<th>{% trans "Description" %}</th>
+								<th>{% trans "Number of members" %}</th>
 							</tr>
 						</thead>
 						<tbody>
