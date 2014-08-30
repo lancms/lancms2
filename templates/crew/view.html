@@ -4,32 +4,30 @@
 {% block content %}
 <div class="jumbotron">
 <div class="container">
-<h1>Crew Members in {{crew.name}}</h1>
+<h1>Members of {{crew.name}}</h1>
 <p>Event {{event.name}}</p>
 </div>
 </div>
 
-{% if crewmembers %}
+{% if crew %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-9">
 			<div class="panel panel-default">
-				<div class="panel-heading">{% trans "Crews" %}</div>
+				<div class="panel-heading">{% trans "CrewMembers" %}</div>
 				<div class="panel-body">
-					<h1>{{crew.name}}</h1>
 					<table class="table">
 						<thead>
 							<tr>
-								<th>Navn</th>
-								<th>Access</th>
+								<th>Nick</th>
+								<th>Tilgang</th>
 							</tr>
 						</thead>
 						<tbody>
-							{% for crew in crews %}
+							{% for member in crew.members %}
 							<tr>
-								<td><a href="/{{org.name}}/{{event.name}}/+crew/{{crew.name}}" title="Vis medlemmer av {{event.name}}">{{crew.name}}</a></td>
-								<td></td>
-								<td></td>
+								<td>{{member.user.username}}</td>
+								<td>{{member.access}}</td>
 							</tr>
 							{% endfor %}
 						</tbody>
