@@ -45,7 +45,7 @@
 		<div class="col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					{% trans "Owners" %} <a class="fa fa-plus-square-o pull-right" href="#FIXME"></a>
+					{% trans "Owners" %} <a class="fa fa-plus-square-o pull-right" href="{% url 'event_owner_add' organization.urlslug event.urlslug %}"></a>
 				</div>
 				<table class="table">
 					<thead>
