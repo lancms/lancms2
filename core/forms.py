@@ -98,4 +98,16 @@ class EventOwnerAddForm (forms.Form):
 	def save (self, event):
 		user = User.objects.get(username=self.cleaned_data['username'])
 		event.owner.user_set.add (user)
-		
+
+class EventSetting (forms.ModelForm):
+	class Meta:
+		model = Event
+		fields = ['name', 'about', 'is_active', 'externalurl', 'startdatetime', 'enddatetime', ]
+
+	def save (self, event, *args, **kwargs):
+
+		#self.instance.organization = self.organization
+		#self.instance.owner = model.owner
+		post = super (EventSetting, self).save (*args, **kwargs)
+		post.organization = event.organization
+		post.save()

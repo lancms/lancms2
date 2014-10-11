@@ -10,7 +10,7 @@ from django.contrib import messages
 from core.models import Organization, Event
 from ticket.models import TicketType
 from crew.models import Crew
-from core.forms import EventForm, EventOwnerAddForm
+from core.forms import EventForm, EventOwnerAddForm, EventSetting
 
 
 def index (request):
@@ -139,3 +139,28 @@ def event_front (request, orgslug, eventslug):
 	c['event'] = event
 	
 	return prtr ('event/front.html', c, request) 
+
+def event_settings (request, orgslug, eventslug):
+	c = {}
+	event = get_object_or_404(Event, urlslug=eventslug)
+	org = event.organization
+	c['organization'] = org
+	c['event'] = event
+
+
+	if request.method == 'POST':
+		form = EventSetting (request.POST)
+		if form.is_valid ():
+			form.save (event=event)
+			messages.add_message (request, messages.SUCCESS, _('Changed event settings!'))
+			return redirect(event)
+		else:
+			form = EventSetting (request.POST)
+	else:
+		form = EventSetting (event)
+
+        c['form'] = form
+
+
+	return prtr ('event/settings.html', c, request)
+

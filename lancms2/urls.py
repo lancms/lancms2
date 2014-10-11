@@ -15,6 +15,7 @@ urlpatterns = patterns('',
 	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/$', 'core.views.event_front', name='event_front'),
 	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/\+addowner/$', 'core.views.event_owner_add', name='event_owner_add'),
 	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/\+admin/$', 'core.views.event_admin', name='event_admin'),
+	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/\+settings/$', 'core.views.event_settings', name='event_settings'),
 
 	url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/\+crews/$', 'crew.views.crew_front', name='crew_front'),
 	#url ('^(?P<orgslug>[\w-]+)/(?P<eventslug>[\w-]+)/\+crews/apply$', 'crew.views.apply_form', name='apply_form'),
