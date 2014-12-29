@@ -79,7 +79,7 @@
 		<div class="col-xs-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					{% trans "Event settings" %} <a class="fa fa-edit pull-right" href="#FIXME"></a>
+					{% trans "Event settings" %} <a class="fa fa-edit pull-right" href="{% url 'event_settings' organization.urlslug event.urlslug %}"></a>
 				</div>
 				<div class="panel-body">
 					{% trans "Event active" %} {{event.is_active|yesno:_("Yes,No")}}

@@ -47,7 +47,7 @@ class UserProfile(models.Model):
 class Organization (models.Model):
 	name = models.CharField (max_length=64, verbose_name=_('Name'))
 	about = models.TextField (null=True, verbose_name=_('About'))
-	owner = models.ForeignKey (Group,null=True, verbose_name=_('Owner'))
+	owner = models.ForeignKey (Group,null=True, verbose_name=_('Owner'), editable=False)
 	is_active = models.BooleanField (default=False, verbose_name=_('Activated'))
 	urlslug = models.SlugField (unique=True, verbose_name=_('URL-slug'))
 	externalurl = models.URLField (null=True, verbose_name=_('External website'))
@@ -81,10 +81,10 @@ class Organization (models.Model):
 
 
 class Event (models.Model):
-	organization = models.ForeignKey(Organization, verbose_name=_('Organization'))
+	organization = models.ForeignKey(Organization, verbose_name=_('Organization'), editable=False)
 	name = models.CharField (max_length=64, verbose_name=_('Name'))
 	about = models.TextField (null=True, verbose_name=_('About'))
-	owner = models.ForeignKey (Group, verbose_name=_('Owner'))
+	owner = models.ForeignKey (Group, verbose_name=_('Owner'), editable=False)
 	is_active = models.BooleanField (default=False, verbose_name=_('Activated'))
 	urlslug = models.SlugField (unique=True, verbose_name=_('URL-slug'))
 	externalurl = models.URLField (null=True, verbose_name=_('External website'))

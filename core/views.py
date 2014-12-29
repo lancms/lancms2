@@ -140,27 +140,29 @@ def event_front (request, orgslug, eventslug):
 	
 	return prtr ('event/front.html', c, request) 
 
+@login_required
 def event_settings (request, orgslug, eventslug):
 	c = {}
-	event = get_object_or_404(Event, urlslug=eventslug)
-	org = event.organization
+	org = get_object_or_404(Organization, urlslug=orgslug)
+	event = get_object_or_404(Event, urlslug=eventslug, organization=org)
+#	org = event.organization
 	c['organization'] = org
 	c['event'] = event
-
 
 	if request.method == 'POST':
 		form = EventSetting (request.POST)
 		if form.is_valid ():
-			form.save (event=event)
+			form.save ()
 			messages.add_message (request, messages.SUCCESS, _('Changed event settings!'))
 			return redirect(event)
 		else:
+			messages.add_message (request, messages.ERROR, form.errors)
 			form = EventSetting (request.POST)
 	else:
 		form = EventSetting (event)
+	form = EventSetting (None,instance=event)
 
         c['form'] = form
-
 
 	return prtr ('event/settings.html', c, request)
 

@@ -102,12 +102,13 @@ class EventOwnerAddForm (forms.Form):
 class EventSetting (forms.ModelForm):
 	class Meta:
 		model = Event
-		fields = ['name', 'about', 'is_active', 'externalurl', 'startdatetime', 'enddatetime', ]
+#		fields = ['name', 'about', 'is_active', 'externalurl', 'startdatetime', 'enddatetime']
+#		exclude = ('owner_id', 'organization_id',)
 
 	def save (self, event, *args, **kwargs):
 
-		#self.instance.organization = self.organization
-		#self.instance.owner = model.owner
+#		self.instance.organization = self.organization
+#		self.instance.owner = model.owner
 		post = super (EventSetting, self).save (*args, **kwargs)
-		post.organization = event.organization
+#		post.organization = event.organization
 		post.save()
