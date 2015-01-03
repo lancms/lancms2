@@ -141,25 +141,6 @@ SOCIALACCOUNT_AUTO_SIGNUP = False
 
 ##### end allauth
 
-##### start south
-#SOUTH_MIGRATION_MODULES = {
-#	'allauth': 'ignore',
-#	'socialaccount': 'ignore',
-#	'auth': 'ignore',
-#	'django_countries': 'ignore',
-#	'contenttypes': 'ignore',
-#	'sessions': 'ignore',
-#	'messages': 'ignore',
-#	'staticfiles': 'ignore',
-#	'debug_toolbar': 'ignore',
-#	'account': 'ignore',
-#	'admin': 'ignore',
-#	'facebook': 'ignore',
-#}
-##### end south
-
-
-
 ##### import settings from lancms2/local_settings.py
 try:
 	from local_settings import *
