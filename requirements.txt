@@ -1,4 +1,5 @@
 Django==1.7.2
+Pillow==2.7.0
 defusedxml==0.4.1
 django-allauth==0.18.0
 django-bootstrap-form==3.1
