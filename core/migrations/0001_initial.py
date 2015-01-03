@@ -1,78 +1,80 @@
 # -*- coding: utf-8 -*-
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+import django_countries.fields
+from django.conf import settings
 
 
-class Migration(SchemaMigration):
+class Migration(migrations.Migration):
 
-    def forwards(self, orm):
-        # Adding model 'UserProfile'
-        db.create_table(u'core_userprofile', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
-            ('date_of_birth', self.gf('django.db.models.fields.DateField')(null=True)),
-            ('streetaddress', self.gf('django.db.models.fields.CharField')(max_length=255, null=True)),
-            ('country', self.gf('django_countries.fields.CountryField')(max_length=2, null=True)),
-            ('postalcode', self.gf('django.db.models.fields.IntegerField')(null=True)),
-            ('gender', self.gf('django.db.models.fields.CharField')(max_length=6, null=True)),
-        ))
-        db.send_create_signal(u'core', ['UserProfile'])
+    dependencies = [
+        ('auth', '0001_initial'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
 
-
-    def backwards(self, orm):
-        # Deleting model 'UserProfile'
-        db.delete_table(u'core_userprofile')
-
-
-    models = {
-        u'auth.group': {
-            'Meta': {'object_name': 'Group'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
-            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
-        },
-        u'auth.permission': {
-            'Meta': {'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')", 'unique_together': "((u'content_type', u'codename'),)", 'object_name': 'Permission'},
-            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['contenttypes.ContentType']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
-        },
-        u'auth.user': {
-            'Meta': {'object_name': 'User'},
-            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
-            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Group']"}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
-            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
-            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "u'user_set'", 'blank': 'True', 'to': u"orm['auth.Permission']"}),
-            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
-        },
-        u'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
-        },
-        u'core.userprofile': {
-            'Meta': {'object_name': 'UserProfile'},
-            'country': ('django_countries.fields.CountryField', [], {'max_length': '2', 'null': 'True'}),
-            'date_of_birth': ('django.db.models.fields.DateField', [], {'null': 'True'}),
-            'gender': ('django.db.models.fields.CharField', [], {'max_length': '6', 'null': 'True'}),
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'postalcode': ('django.db.models.fields.IntegerField', [], {'null': 'True'}),
-            'streetaddress': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'})
-        }
-    }
-
-    complete_apps = ['core']
+    operations = [
+        migrations.CreateModel(
+            name='Event',
+            fields=[
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('name', models.CharField(verbose_name='Name', max_length=64)),
+                ('about', models.TextField(verbose_name='About', null=True)),
+                ('is_active', models.BooleanField(verbose_name='Activated', default=False)),
+                ('urlslug', models.SlugField(verbose_name='URL-slug', unique=True)),
+                ('externalurl', models.URLField(verbose_name='External website', null=True)),
+                ('startdatetime', models.DateTimeField(verbose_name='Start time', help_text='YYYY-MM-DD HH:MM')),
+                ('enddatetime', models.DateTimeField(verbose_name='End time', help_text='YYYY-MM-DD HH:MM')),
+            ],
+            options={
+                'verbose_name': 'Event',
+                'verbose_name_plural': 'Events',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Organization',
+            fields=[
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('name', models.CharField(verbose_name='Name', max_length=64)),
+                ('about', models.TextField(verbose_name='About', null=True)),
+                ('is_active', models.BooleanField(verbose_name='Activated', default=False)),
+                ('urlslug', models.SlugField(verbose_name='URL-slug', unique=True)),
+                ('externalurl', models.URLField(verbose_name='External website', null=True)),
+                ('owner', models.ForeignKey(verbose_name='Owner', editable=False, to='auth.Group', null=True)),
+            ],
+            options={
+                'verbose_name': 'Organization',
+                'verbose_name_plural': 'Organizations',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='UserProfile',
+            fields=[
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('date_of_birth', models.DateField(null=True)),
+                ('streetaddress', models.CharField(max_length=255, null=True)),
+                ('country', django_countries.fields.CountryField(max_length=2, null=True)),
+                ('postalcode', models.PositiveSmallIntegerField(null=True)),
+                ('gender', models.CharField(max_length=6, null=True, choices=[('female', 'Female'), ('male', 'Male')])),
+                ('phone', models.CharField(max_length=20, null=True)),
+                ('user', models.OneToOneField(to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='event',
+            name='organization',
+            field=models.ForeignKey(verbose_name='Organization', editable=False, to='core.Organization'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='event',
+            name='owner',
+            field=models.ForeignKey(verbose_name='Owner', editable=False, to='auth.Group'),
+            preserve_default=True,
+        ),
+    ]
