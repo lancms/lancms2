@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-22 17:48+0200\n"
+"POT-Creation-Date: 2015-01-03 16:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,8 +62,10 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
-#: core/models.py:48 core/models.py:85 templates/event/admin.html:54
+#: core/models.py:48 core/models.py:85 crew/models.py:10
+#: templates/crew/front.html:22 templates/event/admin.html:54
 #: templates/organization/admin.html:54 templates/organization/admin.html:89
+#: ticket/models.py:16
 msgid "Name"
 msgstr ""
 
@@ -112,20 +114,45 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
-#: core/views.py:84
+#: core/views.py:89
 msgid "Created event!"
 msgstr ""
 
-#: core/views.py:112
+#: core/views.py:117
 msgid "Added event owner!"
 msgstr ""
 
-#: core/views.py:116
+#: core/views.py:121
 msgid "User is already event owner!"
 msgstr ""
 
-#: core/views.py:119
+#: core/views.py:124
 msgid "User doesn't exist"
+msgstr ""
+
+#: core/views.py:156
+msgid "Changed event settings!"
+msgstr ""
+
+#: crew/models.py:11 templates/crew/front.html:23
+msgid "Description"
+msgstr ""
+
+#: crew/models.py:24
+msgid "Crew"
+msgstr ""
+
+#: crew/models.py:25 templates/crew/front.html:17
+msgid "Crews"
+msgstr ""
+
+#: crew/models.py:31 templates/account/profile.html:113
+#: templates/crew/view.html:25
+msgid "Access"
+msgstr ""
+
+#: crew/models.py:48 crew/models.py:49 templates/crew/view.html:18
+msgid "CrewMembers"
 msgstr ""
 
 #: templates/403.html:8
@@ -257,10 +284,6 @@ msgstr ""
 msgid "Registered"
 msgstr ""
 
-#: templates/account/profile.html:113
-msgid "Access"
-msgstr ""
-
 #: templates/account/signup.html:6 templates/socialaccount/signup.html:6
 msgid "Signup"
 msgstr ""
@@ -312,6 +335,38 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
+#: templates/crew/front.html:7
+msgid "Crews on"
+msgstr ""
+
+#: templates/crew/front.html:8 templates/crew/view.html:9
+msgid "Back to"
+msgstr ""
+
+#: templates/crew/front.html:8
+msgid "Apply for crew"
+msgstr ""
+
+#: templates/crew/front.html:24
+msgid "Number of members"
+msgstr ""
+
+#: templates/crew/view.html:7
+msgid "Members of"
+msgstr ""
+
+#: templates/crew/view.html:9
+msgid "crewlist"
+msgstr ""
+
+#: templates/crew/view.html:24
+msgid "Nick"
+msgstr ""
+
+#: templates/crew/view.html:39
+msgid "No members in this crew"
+msgstr ""
+
 #: templates/event/admin.html:9 templates/organization/admin.html:9
 msgid "Administration"
 msgstr ""
@@ -329,28 +384,44 @@ msgstr ""
 msgid "Owners"
 msgstr ""
 
-#: templates/event/admin.html:82
-msgid "Event time"
+#: templates/event/admin.html:82 templates/event/settings.html:10
+msgid "Event settings"
 msgstr ""
 
 #: templates/event/admin.html:85
-msgid "Start time:"
-msgstr ""
-
-#: templates/event/admin.html:86
-msgid "End time:"
-msgstr ""
-
-#: templates/event/admin.html:93
 msgid "Event active"
 msgstr ""
 
-#: templates/event/admin.html:96 templates/organization/admin.html:99
+#: templates/event/admin.html:85 templates/organization/admin.html:99
 msgid "Yes,No"
 msgstr ""
 
-#: templates/event/admin.html:103
+#: templates/event/admin.html:86
+msgid "Start time:"
+msgstr ""
+
+#: templates/event/admin.html:87
+msgid "End time:"
+msgstr ""
+
+#: templates/event/admin.html:94
+msgid "Event crew"
+msgstr ""
+
+#: templates/event/admin.html:104
 msgid "Event tickets"
+msgstr ""
+
+#: templates/event/admin.html:110
+msgid "Ticketname"
+msgstr ""
+
+#: templates/event/admin.html:111
+msgid "For sale"
+msgstr ""
+
+#: templates/event/admin.html:112
+msgid "Reserved"
 msgstr ""
 
 #: templates/event/front.html:11 templates/organization/front.html:13
@@ -397,7 +468,7 @@ msgstr ""
 msgid "Add owner"
 msgstr ""
 
-#: templates/event/owner_add.html:17
+#: templates/event/owner_add.html:17 templates/event/settings.html:16
 #: templates/organization/event_create.html:17
 msgid "Submit"
 msgstr ""
@@ -427,4 +498,20 @@ msgstr ""
 msgid ""
 "You are about to use your %(provider_name)s account to login to\n"
 "%(site_name)s. As a final step, please complete the following form:"
+msgstr ""
+
+#: ticket/models.py:11
+msgid "Prepaid"
+msgstr ""
+
+#: ticket/models.py:12
+msgid "Preordered"
+msgstr ""
+
+#: ticket/models.py:23
+msgid "Tickettype"
+msgstr ""
+
+#: ticket/models.py:24
+msgid "Tickettypes"
 msgstr ""
