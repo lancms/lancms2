@@ -33,7 +33,7 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">{% trans "Organizations" %} <b class="caret"></b></a>
 								<ul class="dropdown-menu">{% comment %}FIXME: label 'owner' should be .pull-right, but I can't seem to get that working -- mboehn{% endcomment %}
 									{% for org in organizations %}
-									<li><a href="{% url 'organization_front' slug=org.urlslug %}">{{org}}{% if user|owns_org:org %} <span class="label label-success">Owner</span>{% endif %}</a></li>
+									<li><a href="{% url 'organization_front' slug=org.urlslug %}">{{org.name}}{% if user|owns_org:org %} <span class="label label-success">Owner</span>{% endif %}</a></li>
 									{% endfor %}
 								</ul>
 							</li>
