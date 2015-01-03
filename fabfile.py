@@ -48,7 +48,7 @@ def _upload_and_unpack ():
 
 def _create_virtualenv ():
 	with cd ('%s' % env.path_root):
-		run ('virtualenv virtualenv')
+		run ('virtualenv virtualenv -p python3')
 	run ('source %svirtualenv/bin/activate' % env.path_root)
 	print (green ('Created (or recreated) virtual environment'))
 
