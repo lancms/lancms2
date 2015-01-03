@@ -3,3 +3,4 @@ lancms2.sql
 lancms2/local_settings.py
 .bzr_rev
 media/uploads/*
+static/
