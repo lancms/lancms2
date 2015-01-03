@@ -162,7 +162,7 @@ def event_settings (request, orgslug, eventslug):
 		form = EventSetting (event)
 	form = EventSetting (None,instance=event)
 
-        c['form'] = form
+	c['form'] = form
 
 	return prtr ('event/settings.html', c, request)
 
