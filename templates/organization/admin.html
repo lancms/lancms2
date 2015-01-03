@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load owns_org %}
+{% load thumbnail %}
 
 {% block content %}
 
@@ -26,7 +27,10 @@
 					{% trans "Logo/Image" %}<a class="fa fa-edit pull-right" href="#FIXME"></a>
 				</div>
 				<div class="panel-body">
-					<img src="{{organization.logo.url}}" alt="Organization logo" />
+					{% if organization.logo %}
+					{% thumbnail organization.logo 100x100 upscale as thumb %}
+					<img src="{{thumb.url}}" height="{{thumb.height}}" width="{{thumb.width}}" alt="Organization logo" class="img-responsive center-block">
+					{% endif %}
 				</div>
 			</div>
 		</div>
