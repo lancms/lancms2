@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: lancms\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2015-01-03 16:33+0100\n"
-"PO-Revision-Date: 2014-07-22 17:31+0000\n"
+"PO-Revision-Date: 2015-01-04 09:21+0000\n"
 "Last-Translator: Lars Åge Kamfjord <lars-launchpad@kamfjord.org>\n"
 "Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-01-04 06:37+0000\n"
+"X-Launchpad-Export-Date: 2015-01-05 06:52+0000\n"
 "X-Generator: Launchpad (build 17286)\n"
 
 #: core/forms.py:20
@@ -132,19 +132,19 @@ msgstr "Bruker eksisterer ikke"
 
 #: core/views.py:156
 msgid "Changed event settings!"
-msgstr ""
+msgstr "Endret arrangementsinnstillinger!"
 
 #: crew/models.py:11 templates/crew/front.html:23
 msgid "Description"
-msgstr ""
+msgstr "Beskrivelse."
 
 #: crew/models.py:24
 msgid "Crew"
-msgstr ""
+msgstr "Crew"
 
 #: crew/models.py:25 templates/crew/front.html:17
 msgid "Crews"
-msgstr ""
+msgstr "Crew"
 
 #: crew/models.py:31 templates/account/profile.html:113
 #: templates/crew/view.html:25
@@ -153,7 +153,7 @@ msgstr "Tilgang"
 
 #: crew/models.py:48 crew/models.py:49 templates/crew/view.html:18
 msgid "CrewMembers"
-msgstr ""
+msgstr "Crewmedlemmer"
 
 #: templates/403.html:8
 msgid "Access denied"
@@ -366,31 +366,31 @@ msgstr ""
 
 #: templates/crew/front.html:8 templates/crew/view.html:9
 msgid "Back to"
-msgstr ""
+msgstr "Tilbake til"
 
 #: templates/crew/front.html:8
 msgid "Apply for crew"
-msgstr ""
+msgstr "Søk crew"
 
 #: templates/crew/front.html:24
 msgid "Number of members"
-msgstr ""
+msgstr "Antall medlemmer"
 
 #: templates/crew/view.html:7
 msgid "Members of"
-msgstr ""
+msgstr "Medlemmer av"
 
 #: templates/crew/view.html:9
 msgid "crewlist"
-msgstr ""
+msgstr "crewliste"
 
 #: templates/crew/view.html:24
 msgid "Nick"
-msgstr ""
+msgstr "Kallenavn"
 
 #: templates/crew/view.html:39
 msgid "No members in this crew"
-msgstr ""
+msgstr "Ingen medlemmer i dette crewet"
 
 #: templates/event/admin.html:9 templates/organization/admin.html:9
 msgid "Administration"
@@ -411,7 +411,7 @@ msgstr "Eiere"
 
 #: templates/event/admin.html:82 templates/event/settings.html:10
 msgid "Event settings"
-msgstr ""
+msgstr "Arrangementsinnstillinger"
 
 #: templates/event/admin.html:85
 msgid "Event active"
@@ -431,7 +431,7 @@ msgstr "Sluttid"
 
 #: templates/event/admin.html:94
 msgid "Event crew"
-msgstr ""
+msgstr "Arrangementscrew"
 
 #: templates/event/admin.html:104
 msgid "Event tickets"
@@ -439,15 +439,15 @@ msgstr "Arrangementsbilletter"
 
 #: templates/event/admin.html:110
 msgid "Ticketname"
-msgstr ""
+msgstr "Billettnavn"
 
 #: templates/event/admin.html:111
 msgid "For sale"
-msgstr ""
+msgstr "Til salgs"
 
 #: templates/event/admin.html:112
 msgid "Reserved"
-msgstr ""
+msgstr "Reservert"
 
 #: templates/event/front.html:11 templates/organization/front.html:13
 msgid "Visit website"
@@ -529,16 +529,16 @@ msgstr ""
 
 #: ticket/models.py:11
 msgid "Prepaid"
-msgstr ""
+msgstr "Forhåndsbetalt"
 
 #: ticket/models.py:12
 msgid "Preordered"
-msgstr ""
+msgstr "Forhåndsbestilt"
 
 #: ticket/models.py:23
 msgid "Tickettype"
-msgstr ""
+msgstr "Billettype"
 
 #: ticket/models.py:24
 msgid "Tickettypes"
-msgstr ""
+msgstr "Billettyper"
