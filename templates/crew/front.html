@@ -27,7 +27,7 @@
 						<tbody>
 							{% for crew in crews %}
 							<tr>
-								<td><a href="/{{org.name}}/{{event.urlslug}}/+crew/{{crew.name}}" title="Vis medlemmer av {{event.name}}">{{crew.name}}</a></td>
+								<td><a href="/{{org.name}}/{{event.urlslug}}/+crew/{{crew.name}}" title="{% trans "Show members of" %} {{event.name}}">{{crew.name}}</a></td>
 								<td>{{crew.description}}</td>
 								<td>{{crew.numMembers}}</td>
 							</tr>
