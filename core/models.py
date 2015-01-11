@@ -8,6 +8,8 @@ from django.db import models
 from django.contrib.auth.models import User, Group
 from django_countries.fields import CountryField
 
+from uuid import uuid4
+import os
 
 CHOICES_GENDER = (
 	('female', _('Female')),
@@ -44,6 +46,11 @@ class UserProfile(models.Model):
 			pass
 
 
+def logo_rename (instance, filename):
+	path = 'uploads/logo/'
+	filename = uuid4().hex
+	return os.path.join(path, filename)
+
 class Organization (models.Model):
 	name = models.CharField (max_length=64, verbose_name=_('Name'))
 	about = models.TextField (null=True, verbose_name=_('About'))
@@ -51,6 +58,7 @@ class Organization (models.Model):
 	is_active = models.BooleanField (default=False, verbose_name=_('Activated'))
 	urlslug = models.SlugField (unique=True, verbose_name=_('URL-slug'))
 	externalurl = models.URLField (null=True, verbose_name=_('External website'))
+	logo = models.ImageField (null=True, upload_to=logo_rename)
 
 
 	def __unicode__ (self):

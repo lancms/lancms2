@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load thumbnail %}
 
 {% block content %}
 <div class="jumbotron">
@@ -46,7 +47,12 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">{% trans "Organized by" %}</div>
 				<div class="panel-body">
-					{{event.organization.name}}
+					{% if organization.logo %}
+						{% thumbnail organization.logo 100x100 upscale as thumb %}
+						<a href="{% url 'organization_front' slug=organization.urlslug %}"><img src="{{thumb.url}}" height="{{thumb.height}}" width="{{thumb.width}}" alt="Organization logo" class="img-responsive center-block"></a>
+					{% else %}
+						{{event.organization.name}}
+					{% endif %}
 				</div>
 			</div>
 		</div>
