@@ -111,6 +111,9 @@ class Event (models.Model):
 	def __unicode__ (self):
 		return self.name
 
+	def user_is_owner (self, user):
+                # FIXME: could I have dropped pk? Not sure what else to filter on... -- mboehn
+                return user.groups.filter(pk=self.owner.pk).exists()
 
 	class Meta:
 		verbose_name = _('Event')

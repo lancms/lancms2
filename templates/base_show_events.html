@@ -1,11 +1,16 @@
 {% load i18n %}
+{% load owns_event %}
 
 {% if event_featured %}
 <div class="jumbotron">
 <div class="container">
 <h1>{{ event_featured.name }}</h1>
 <p>{{ event_featured.about }}</p>
-<p><a class="btn btn-primary btn-lg" role="button" href="{{event_featured.get_absolute_url}}">{% trans "View details" %} &raquo;</a></p>
+<p><a class="btn btn-primary btn-lg" role="button" href="{{event_featured.get_absolute_url}}">{% trans "View details" %} &raquo;</a>
+{% if user|owns_event:event %}
+<a href="{% url 'event_admin' organization.urlslug event.urlslug %}" class="btn btn-success btn-lg" role="button">{% trans "Administrate event" %}_&raquo;</a>
+{% endif %}
+</p>
 </div>
 </div>
 {% endif %}
@@ -17,7 +22,13 @@
 		<div class="col-md-4">
 			<h2>{{event.name}}</h2>
 			<p>{{event.about}}</p>
-			<p><a class="btn btn-default" href="{{event.get_absolute_url}}" role="button">{% trans "View details" %} &raquo;</a></p>
+			<p><a class="btn btn-default" href="{{event.get_absolute_url}}" role="button">{% trans "View details" %} &raquo;</a>
+{% if user|owns_event:event %}
+	<a href="{% url 'event_admin' organization.urlslug event.urlslug %}" class="btn btn-success btn-lg" role="button">{% trans "Administrate event" %}_&raquo;</a>
+{% else %}
+<p>WHUT?</p>
+{% endif %}
+</p>
 		</div>
 	{% if forloop.counter|divisibleby:3 or forloop.last %}</div>{% endif %}
 {% endfor %}
