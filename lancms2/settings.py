@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     'core',
 	 'debug_toolbar', # for DEBUG
 	 'django_countries',
-	 'south',
 	 'bootstrapform',
 	 'ticket',
 	 'crew',
@@ -102,7 +101,9 @@ STATIC_URL = '/static/'
 #####
 MEDIA_ROOT = os.path.join (BASE_DIR, 'media/')
 STATIC_ROOT = os.path.join (BASE_DIR, 'static/')
-TEMPLATE_DIRS = os.path.join (BASE_DIR, 'templates/')
+TEMPLATE_DIRS = (
+	os.path.join(BASE_DIR, 'templates/'),
+)
 
 LOGIN_REDIRECT_URL = 'core.views.selfprofile'
 LOGOUT_URL = 'allauth.account.views.logout'
@@ -139,25 +140,6 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 SOCIALACCOUNT_AUTO_SIGNUP = False
 
 ##### end allauth
-
-##### start south
-SOUTH_MIGRATION_MODULES = {
-	'allauth': 'ignore',
-	'socialaccount': 'ignore',
-	'auth': 'ignore',
-	'django_countries': 'ignore',
-	'contenttypes': 'ignore',
-	'sessions': 'ignore',
-	'messages': 'ignore',
-	'staticfiles': 'ignore',
-	'debug_toolbar': 'ignore',
-	'account': 'ignore',
-	'admin': 'ignore',
-	'facebook': 'ignore',
-}
-##### end south
-
-
 
 ##### import settings from lancms2/local_settings.py
 try:
