@@ -150,9 +150,9 @@ def event_settings (request, orgslug, eventslug):
 	c['event'] = event
 
 	if request.method == 'POST':
-		form = EventSetting (request.POST)
+		form = EventSetting (request.POST, instance=event)
 		if form.is_valid ():
-			form.save ()
+			form.save (event)
 			messages.add_message (request, messages.SUCCESS, _('Changed event settings!'))
 			return redirect(event)
 		else:
