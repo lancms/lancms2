@@ -67,7 +67,7 @@ def event_admin (request, orgslug, eventslug):
 	c['event'] = event
 	c['tickettypes'] = tickettypes
 
-	if not org.user_is_owner(request.user):
+	if not event.user_is_owner(request.user):
 		raise PermissionDenied
 
 	return render(request, 'event/admin.html', c)
