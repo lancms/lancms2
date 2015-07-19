@@ -103,7 +103,7 @@ class EventSetting (forms.ModelForm):
 	class Meta:
 		model = Event
 #		fields = ['name', 'about', 'is_active', 'externalurl', 'startdatetime', 'enddatetime']
-#		exclude = ('owner_id', 'organization_id',)
+		exclude = ('owner_id', 'organization_id',)
 
 	def save (self, event, *args, **kwargs):
 
