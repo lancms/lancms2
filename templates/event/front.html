@@ -9,9 +9,9 @@
 <p>{{event.about}}</p>
 <p>
 {% if event.externalurl %}
-<a href="{{organization.externalurl}}" class="btn btn-primary btn-lg" role="button">{% trans "Visit website" %} &raquo;</a>
+<a href="{{event.externalurl}}" class="btn btn-primary btn-lg" role="button">{% trans "Visit website" %} &raquo;</a>
 {% endif %}
-{% if event.externalurl %}
+{% if event.externalurl %} {% comment %}Need to change this if when tickets gets implemented --mboehn{% endcomment %}
 <a href="#FIXME-buy-tickets-please" class="btn btn-warning btn-lg" role="button">{% trans "Buy tickets" %} &raquo;</a>
 {% endif %}
 </p>
@@ -51,7 +51,7 @@
 						{% thumbnail organization.logo 100x100 upscale as thumb %}
 						<a href="{% url 'organization_front' slug=organization.urlslug %}"><img src="{{thumb.url}}" height="{{thumb.height}}" width="{{thumb.width}}" alt="Organization logo" class="img-responsive center-block"></a>
 					{% else %}
-						{{event.organization.name}}
+						{{organization.name}}
 					{% endif %}
 				</div>
 			</div>
