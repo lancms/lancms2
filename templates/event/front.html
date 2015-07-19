@@ -51,7 +51,7 @@
 						{% thumbnail organization.logo 100x100 upscale as thumb %}
 						<a href="{% url 'organization_front' slug=organization.urlslug %}"><img src="{{thumb.url}}" height="{{thumb.height}}" width="{{thumb.width}}" alt="Organization logo" class="img-responsive center-block"></a>
 					{% else %}
-						{{organization.name}}
+						<a href="{% url 'organization_front' slug=organization.urlslug %}">{{organization.name}}</a>
 					{% endif %}
 				</div>
 			</div>
