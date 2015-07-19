@@ -8,7 +8,7 @@
 <p>{{ event_featured.about }}</p>
 <p><a class="btn btn-primary btn-lg" role="button" href="{{event_featured.get_absolute_url}}">{% trans "View details" %} &raquo;</a>
 {% if user|owns_event:event_featured %}
-<a href="{% url 'event_admin' organization.urlslug event_featured.urlslug %}" class="btn btn-success btn-lg" role="button">{% trans "Administrate event" %} &raquo;</a>
+<a href="{% url 'event_admin' event_featured.organization.urlslug event_featured.urlslug %}" class="btn btn-success btn-lg" role="button">{% trans "Administrate event" %} &raquo;</a>
 {% endif %}
 </p>
 </div>
@@ -24,7 +24,7 @@
 			<p>{{event.about}}</p>
 			<p><a class="btn btn-default" href="{{event.get_absolute_url}}" role="button">{% trans "View details" %} &raquo;</a>
 {% if user|owns_event:event %}
-	<a href="{% url 'event_admin' organization.urlslug event.urlslug %}" class="btn btn-success btn-lg" role="button">{% trans "Administrate event" %}_&raquo;</a>
+	<a href="{% url 'event_admin' event.organization.urlslug event.urlslug %}" class="btn btn-success btn-lg" role="button">{% trans "Administrate event" %}_&raquo;</a>
 {% endif %}
 </p>
 		</div>
