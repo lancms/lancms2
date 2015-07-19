@@ -127,6 +127,7 @@ TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
 	'django.core.context_processors.request',
 	'allauth.account.context_processors.account',
 	'allauth.socialaccount.context_processors.socialaccount',
+	'core.processors.lc_data',
 	)
 AUTHENTICATION_BACKENDS = DEFAULT_SETTINGS.AUTHENTICATION_BACKENDS + (
 	'allauth.account.auth_backends.AuthenticationBackend',
