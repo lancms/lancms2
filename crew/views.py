@@ -1,4 +1,3 @@
-from core.common import prtr
 from django.shortcuts import render, get_object_or_404, redirect
 
 from django.http import HttpResponse
@@ -19,7 +18,7 @@ def crew_front (request, orgslug, eventslug):
 	c['event'] = event
 	c['crews'] = crews
 
-	return prtr ('crew/front.html', c, request)
+	return render(request, 'crew/front.html', c,)
 
 
 def crew_view (request, orgslug, eventslug, crewslug):
@@ -35,7 +34,7 @@ def crew_view (request, orgslug, eventslug, crewslug):
 	c['ms'] = crew.members()
 	c['numMs'] = crew.numMembers()
 
-	return prtr ('crew/view.html', c, request)
+	return render(request, 'crew/view.html', c)
 
 
 def apply_form (request, orgslug, eventslug):
@@ -46,4 +45,4 @@ def apply_form (request, orgslug, eventslug):
 	c['org'] = org
 	c['event'] = event
 
-	return prtr ('crew/apply.html', c, request)
+	return render(request, 'crew/apply.html', c)

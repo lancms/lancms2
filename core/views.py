@@ -1,4 +1,4 @@
-from core.common import prtr
+from django.shortcuts import render
 
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import Group
@@ -21,13 +21,13 @@ def index (request):
 		c['event_featured'] = events[0]
 	else:
 		c['events'] = events
-	return prtr ('index.html', c, request) 
+	return render(request, 'index.html', c) 
 
 
 @login_required()
 def selfprofile (request):
 	c = {}
-	return prtr ('account/profile.html', c, request)
+	return render(request, 'account/profile.html', c)
 
 
 def organization_front (request, slug):
@@ -41,7 +41,7 @@ def organization_front (request, slug):
 	else:
 		c['events'] = events
 	
-	return prtr ('organization/front.html', c, request) 
+	return render(request, 'organization/front.html', c,)
 
 
 @login_required()
@@ -52,7 +52,7 @@ def organization_admin (request, slug):
 		raise PermissionDenied
     
 	c = {'organization': org}
-	return prtr ('organization/admin.html', c, request) 
+	return render(request, 'organization/admin.html', c)
 
 
 
@@ -70,7 +70,7 @@ def event_admin (request, orgslug, eventslug):
 	if not org.user_is_owner(request.user):
 		raise PermissionDenied
 
-	return prtr ('event/admin.html', c, request)
+	return render(request, 'event/admin.html', c)
 
 
 @login_required()
@@ -94,7 +94,7 @@ def organization_event_create (request, slug):
 		form = EventForm ()
 	
 	c['form'] = form
-	return prtr ('organization/event_create.html', c, request) 
+	return render(request, 'organization/event_create.html', c)
 
 
 @login_required()
@@ -128,7 +128,7 @@ def event_owner_add (request, orgslug, eventslug):
 		form = EventOwnerAddForm ()
 	
 	c['form'] = form
-	return prtr ('event/owner_add.html', c, request) 
+	return render(request, 'event/owner_add.html', c)
 
 
 def event_front (request, orgslug, eventslug):
@@ -138,7 +138,7 @@ def event_front (request, orgslug, eventslug):
 	c['organization'] = org
 	c['event'] = event
 	
-	return prtr ('event/front.html', c, request) 
+	return render(request, 'event/front.html', c)
 
 @login_required
 def event_settings (request, orgslug, eventslug):
@@ -164,5 +164,4 @@ def event_settings (request, orgslug, eventslug):
 
 	c['form'] = form
 
-	return prtr ('event/settings.html', c, request)
-
+	return render(request, 'event/settings.html', c)
