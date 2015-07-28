@@ -1,0 +1,28 @@
+from django.db import models
+
+from simple_history.models import HistoricalRecords
+
+from django.contrib.auth.models import User
+
+class Organization(models.Model):
+    name = models.CharField(max_length=256)
+    history = HistoricalRecords()
+
+
+    class Meta:
+            permissions = (
+                ('manage_organization', 'Can manage organization'),
+            )
+
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=256)
+    organization = models.ForeignKey(Organization)
+    history = HistoricalRecords()
+
+
+    class Meta:
+            permissions = (
+                ('manage_event', 'Can manage event'),
+            )

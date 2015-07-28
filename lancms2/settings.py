@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'guardian',
     'simple_history',
+    'event',
 )
 
 AUTHENTICATION_BACKENDS = (
