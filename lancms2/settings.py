@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'guardian',
     'simple_history',
+    'bootstrap3',
     'event',
 )
 
