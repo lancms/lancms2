@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'guardian',
+    'simple_history',
 )
 
 AUTHENTICATION_BACKENDS = (
