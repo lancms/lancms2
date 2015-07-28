@@ -1,7 +1,6 @@
-lancms2.sql
+db.sqlite3
 *.py[co]
 lancms2/local_settings.py
-.bzr_rev
 media/uploads/*
 static/
 .*.swp
