@@ -1,3 +1,9 @@
+# LANCMS 2
+
+* Work in progress.
+* Python/Django-based.
+* Developed with PostgreSQL in mind.
+
 # Installing
 
 1. Create virtual environment with python3
