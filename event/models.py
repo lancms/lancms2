@@ -9,6 +9,10 @@ class Organization(models.Model):
     history = HistoricalRecords()
 
 
+    def __str__(self):
+        return self.name
+
+
     class Meta:
             permissions = (
                 ('manage_organization', 'Can manage organization'),
@@ -20,6 +24,10 @@ class Event(models.Model):
     name = models.CharField(max_length=256)
     organization = models.ForeignKey(Organization)
     history = HistoricalRecords()
+
+
+    def __str__(self):
+        return self.name
 
 
     class Meta:
