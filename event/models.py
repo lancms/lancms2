@@ -22,6 +22,8 @@ class Organization(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=256)
+    start = models.DateTimeField()
+    end = models.DateTimeField()
     organization = models.ForeignKey(Organization)
     history = HistoricalRecords()
 
