@@ -1,5 +1,16 @@
+{% extends "core/base.html"%}
+
+
+{% block bootstrap3_content %}
+
+<div class="container">
+
 {% for event in object_list %}
-
+<p>
 {{event.name}} by {{event.organization.name}}
-
+</p>
 {% endfor %}
+
+</div>
+
+{% endblock %}
