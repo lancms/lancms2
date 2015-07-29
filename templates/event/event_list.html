@@ -1,14 +1,22 @@
 {% extends "core/base.html"%}
-
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
 
 {% for event in object_list %}
-<p>
-<a href="{% url 'event_detail' slug=event.slug %}">{{event.name}}</a> by <a href="{% url 'org_detail' slug=event.organization.slug %}">{{event.organization.name}}</a>
-</p>
+<div class="list-group">
+    <a href="{% url 'event_detail' slug=event.slug %}" class="list-group-item">
+        <h3 class="list-group-item-heading">{{event.name}}</h3>
+        <p class="list-group-item-text">{% trans "Organized by:" %} {{event.organization.name}}</p>
+        <p class="list-group-item-text">{% trans "Start time:" %} {{event.start}}</p>
+        <p class="list-group-item-text">{% trans "End time:" %} {{event.end}}</p>
+    </a>
+
+</div>
+{% empty %}
+<p>{% trans "No active events at this time" %}</p>
 {% endfor %}
 
 </div>
