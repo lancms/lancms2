@@ -26,7 +26,9 @@
                 <li><a href="#">test2</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Admin</a></li>
+                {% if request.user.is_staff or request.user.is_superuser %}
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                {% endif %}
                 {% if request.user %}
                 <li><a href="#">Signed in as {{request.user}}</a></li>
                 {% endif %}
