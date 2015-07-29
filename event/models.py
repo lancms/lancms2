@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 
 class Organization(models.Model):
     name = models.CharField(max_length=256)
+    slug = models.SlugField()
     history = HistoricalRecords()
 
 
@@ -22,6 +23,7 @@ class Organization(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=256)
+    slug = models.SlugField()
     start = models.DateTimeField()
     end = models.DateTimeField()
     organization = models.ForeignKey(Organization)

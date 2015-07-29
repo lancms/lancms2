@@ -7,7 +7,7 @@
 
 {% for event in object_list %}
 <p>
-{{event.name}} by {{event.organization.name}}
+<a href="{% url 'event_detail' slug=event.slug %}">{{event.name}}</a> by <a href="{% url 'org_detail' slug=event.organization.slug %}">{{event.organization.name}}</a>
 </p>
 {% endfor %}
 
