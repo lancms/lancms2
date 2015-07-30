@@ -122,3 +122,5 @@ STATIC_URL = '/static/'
 
 # Used with django.contrib.sites, which is needed for django-allauth
 SITE_ID = 1
+
+ACCOUNT_USER_DISPLAY = 'core.utils.username'
