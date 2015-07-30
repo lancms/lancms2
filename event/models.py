@@ -20,8 +20,9 @@ class Organization(models.Model):
 
 
     def get_managers(self):
+        codename='manage_organization'
         type = ContentType.objects.get_for_model(self)
-        return UserObjectPermission.objects.filter(object_pk=self.pk, content_type=type)
+        return UserObjectPermission.objects.filter(permission__codename=codename, object_pk=self.pk, content_type=type)
 
     class Meta:
             permissions = (
@@ -53,8 +54,9 @@ class Event(models.Model):
 
 
     def get_managers(self):
+        codename='manage_event'
         type = ContentType.objects.get_for_model(self)
-        return UserObjectPermission.objects.filter(object_pk=self.pk, content_type=type)
+        return UserObjectPermission.objects.filter(permission__codename=codename, object_pk=self.pk, content_type=type)
 
 
     class Meta:

@@ -1,10 +1,13 @@
 {% extends "core/base.html"%}
 {% load i18n %}
+{% load bootstrap3 %}
+{% load account %}
 
 {% load guardian_tags %}
-{% get_obj_perms request.user for organization as "org_perms" %}
 
 {% block content %}
+
+{% get_obj_perms request.user for organization as "org_perms" %}
 
 <div class="container">
 
@@ -27,26 +30,38 @@
 <p>{% trans "This organization has no events" %}</p>
 {% endfor %}
 
-
 {% if "manage_organization" in org_perms or perms.event.add_organization %}
     <h2>{% trans "Management" %}</h2>
     <div class="well">
     <div class="row">
         <div class="col-md-4">
             <div class="panel panel-default">
-                <div class="panel-heading">{% trans "Managers" %}</div>
+                <div class="panel-heading">
+                    {% trans "Managers" %}
+                    <a href="#"><span class="pull-right">{% bootstrap_icon "plus" %}</span></a>
+                </div>
                 <div class="panel-body">
-                    <ul>
+                    <table class="table">
                     {% for managerinstance in organization.get_managers %}
-                        <li>{{managerinstance.user}}</li>
+                        <tr>
+                            <td>
+                            {% if managerinstance.user != request.user %}
+                                <a href="#removeperm">{% bootstrap_icon "minus" %}</a>
+                            {% endif %}
+                            </td>
+                            <td>{% user_display managerinstance.user %}</td>
+                        </tr>
                     {% endfor %}
-                    <ul>
+                    </table>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default">
-                <div class="panel-heading">{% trans "Events" %}</div>
+                <div class="panel-heading">
+                    {% trans "Events" %}
+                    <a href="#"><span class="pull-right">{% bootstrap_icon "plus" %}</span></a>
+                </div>
                 <div class="panel-body">
                 </div>
             </div>
