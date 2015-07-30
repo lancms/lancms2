@@ -5,3 +5,10 @@
 * [x] Add login and logout functionality
 * [x] Add logout button (dropdown under "Signed in as"?)
 * [ ] Check email verification settings and templates
+
+
+
+
+
+## For later
+* [ ] Move debugging and devel tools out of standard deployments

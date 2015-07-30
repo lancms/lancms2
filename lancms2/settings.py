@@ -44,7 +44,8 @@ INSTALLED_APPS = (
     'guardian',
     'simple_history',
     'bootstrap3',
-    'debug_toolbar',
+    'debug_toolbar',                # debugging
+    'django_extensions',            # development
     'event',
 )
 
