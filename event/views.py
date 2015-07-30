@@ -23,7 +23,7 @@ class OrganizationCreateView(CreateView):
     model = Organization
     fields = ['name', 'slug' ]
 
-    @method_decorator(permission_required('event.add_organization'))
+    @method_decorator(permission_required('event.add_organization', raise_exception=True))
     def dispatch(self, *args, **kwargs):
             return super(OrganizationCreateView, self).dispatch(*args, **kwargs)
 
