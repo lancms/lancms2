@@ -22,6 +22,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">{% trans "Where" %}</div>
                 <div class="panel-body">
+                    <address>
+                        <strong>{{event.venuename}}</strong><br>
+                        {{event.address}}<br>
+                        {{event.postalcode}} {{event.city}}<br>
+                        {{event.country}}<br>
+                    </address>
                 </div>
             </div>
         </div>

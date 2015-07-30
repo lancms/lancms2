@@ -26,9 +26,18 @@ class Organization(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField()
+    
     start = models.DateTimeField()
     end = models.DateTimeField()
+
+    venuename = models.CharField(max_length=256)
+    address = models.CharField(max_length=256)
+    postalcode = models.CharField(max_length=10)
+    city = models.CharField(max_length=64)
+    country = models.CharField(max_length=256)
+    
     organization = models.ForeignKey(Organization)
+    
     history = HistoricalRecords()
 
 
