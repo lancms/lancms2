@@ -21,7 +21,7 @@ from event.views import OrganizationDetailView, OrganizationCreateView
 
 from core.views import UserDetailView
 
-from event.views import organization_add_manager
+from event.views import organization_add_manager, organization_remove_manager
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -32,6 +32,7 @@ urlpatterns = [
 
     url(r'^o/(?P<slug>[\w-]+)/$', OrganizationDetailView.as_view(), name='org_detail'),
     url(r'^o/(?P<slug>[\w-]+)/addmanager/$', organization_add_manager, name='org_add_manager'),
+    url(r'^o/(?P<slug>[\w-]+)/removemanager/(?P<user>\d+)/$', organization_remove_manager, name='org_remove_manager'),
 
     url(r'^e/(?P<slug>[\w-]+)/$', EventDetailView.as_view(), name='event_detail'),
 

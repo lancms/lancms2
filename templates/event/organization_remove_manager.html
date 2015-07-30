@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+{% load account %}
+
+{% block content %}
+
+<div class="container">
+
+<h1 class="page-header">{% trans "Remove manager for" %} {{organization}}</h1>
+
+<p>{% trans "Please confirm that you want to remove this user's manager permissions:" %} {% user_display removeuser %}</p>
+
+<form class="form" method="post">
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+
+    {% buttons submit="Submit"  %}
+    {% endbuttons %}
+
+</form>
+
+</div>
+
+{% endblock %}

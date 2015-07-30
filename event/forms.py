@@ -4,7 +4,7 @@ from django import forms
 
 from django.contrib.auth.models import User
 
-from guardian.shortcuts import assign_perm
+from guardian.shortcuts import assign_perm, remove_perm
 
 class AddManagerForm(forms.Form):
     username = forms.CharField(max_length=256)
@@ -19,3 +19,10 @@ class AddManagerForm(forms.Form):
     def save(self, object, permission):
         user = User.objects.get(username=self.cleaned_data['username'])
         return assign_perm(permission, user, object)
+
+
+class RemoveManagerForm(forms.Form):
+    pass
+
+    def save(self, object, user, permission):
+        return remove_perm(permission, user, object)

@@ -46,7 +46,7 @@
                         <tr>
                             <td>
                             {% if managerinstance.user != request.user %}
-                                <a href="#removeperm">{% bootstrap_icon "minus" %}</a>
+                                <a href="{% url 'org_remove_manager' slug=organization.slug user=managerinstance.user.pk %}">{% bootstrap_icon "minus" %}</a>
                             {% endif %}
                             </td>
                             <td>{% user_display managerinstance.user %}</td>

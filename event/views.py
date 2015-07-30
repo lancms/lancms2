@@ -13,7 +13,7 @@ from django.views.generic.edit import CreateView
 
 from django.contrib.auth.models import User
 from event.models import Event, Organization
-from event.forms import AddManagerForm
+from event.forms import AddManagerForm, RemoveManagerForm
 
 class EventListView(ListView):
     model = Event
@@ -54,12 +54,41 @@ def organization_add_manager(request, slug):
         if form.is_valid():
             if form.user_exists():
                 form.save(organization, 'manage_organization')
-                messages.add_message (request, messages.SUCCESS, _("User granted manager permissions")) 
+                messages.add_message(request, messages.SUCCESS, _("User granted manager permissions")) 
                 # FIXME: Should show a different message if user already
                 # has manager rights. -- mboehn
                 return redirect(organization)
             else:
-                messages.add_message (request, messages.ERROR, _("User doesn't exist")) 
+                messages.add_message(request, messages.ERROR, _("User doesn't exist")) 
 
     c['form'] = form
     return render(request, 'event/organization_add_manager.html', c)
+
+
+def organization_remove_manager(request, slug, user):
+    organization = get_object_or_404(Organization, slug=slug)
+    removeuser = get_object_or_404(User, pk=user)
+
+    if not request.user.has_perm('manage_organization', organization) and not request.user.has_perm('event.add_organization'):
+        raise PermissionDenied
+
+    if request.user == removeuser:
+        raise PermissionDenied
+
+    c = {}
+    c['organization'] = organization
+    c['removeuser'] = removeuser
+
+    form = RemoveManagerForm()
+
+    if request.method == 'POST':
+        form.save(organization, removeuser, 'manage_organization')
+        messages.add_message(request, messages.SUCCESS, _("Removed user's manager permissions"))
+        
+        # if error:
+        #messages.add_message(request, messages.ERROR, _("Something went wrong"))
+        # FIXME: organization_remove_manager may need some more error checking or output
+        return redirect(organization)
+
+    c['form'] = form
+    return render(request, 'event/organization_remove_manager.html', c)
