@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'guardian',
     'simple_history',
     'bootstrap3',
+    'debug_toolbar',
     'event',
 )
 
