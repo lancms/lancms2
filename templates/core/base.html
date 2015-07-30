@@ -31,7 +31,13 @@
                 <li><a href="{% url 'admin:index' %}">Admin</a></li>
                 {% endif %}
                 {% if request.user.is_authenticated %}
-                <li><a href="{% url 'user_profile' %}">{% trans "Signed in as" %} {{request.user}}</a></li>
+                <li>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Signed in as"%} {{request.user}}<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href="{% url 'user_profile' %}">{% trans "Show profile" %}</a></li>
+<li><a href="{% url 'account_logout' %}">{% trans "Sign out" %}</a></li>
+</ul>
+                </li>
                 {% endif %}
             </ul>
         </div>
