@@ -38,7 +38,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     {% trans "Managers" %}
-                    <a href="#"><span class="pull-right">{% bootstrap_icon "plus" %}</span></a>
+                    <a href="{% url 'org_add_manager' slug=organization.slug %}"><span class="pull-right">{% bootstrap_icon "plus" %}</span></a>
                 </div>
                 <div class="panel-body">
                     <table class="table table-condensed table-striped">

@@ -1,13 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
+
+from django.contrib import messages
 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
+from django.contrib.auth.models import User
 from event.models import Event, Organization
+from event.forms import AddManagerForm
 
 class EventListView(ListView):
     model = Event
@@ -31,3 +35,24 @@ class OrganizationCreateView(CreateView):
         context = super(OrganizationCreateView, self).get_context_data(**kwargs)
         context['page_header'] = _('Create organization')
         return context
+
+
+@permission_required('event.add_organization', raise_exception=True)
+def organization_add_manager(request, slug):
+    organization = get_object_or_404(Organization, slug=slug)
+
+    c = {}
+    c['organization'] = organization
+    form = AddManagerForm()
+
+    if request.method == 'POST':
+        form = AddManagerForm(request.POST)
+        if form.is_valid():
+            if form.user_exists():
+                form.save(organization, 'manage_organization')
+                return redirect(organization)
+            else:
+                messages.add_message (request, messages.ERROR, _("User doesn't exist")) 
+
+    c['form'] = form
+    return render(request, 'event/organization_add_manager.html', c)

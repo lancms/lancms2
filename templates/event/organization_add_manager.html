@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+
+<h1 class="page-header">{% trans "Add manager for" %} {{organization}}</h1>
+
+<form class="form" method="post">
+    {% csrf_token %}
+
+    {% bootstrap_form form %}
+
+    {% buttons submit="Submit"  %}
+    {% endbuttons %}
+
+</form>
+
+</div>
+
+{% endblock %}
