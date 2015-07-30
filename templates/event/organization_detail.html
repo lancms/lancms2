@@ -41,7 +41,7 @@
                     <a href="#"><span class="pull-right">{% bootstrap_icon "plus" %}</span></a>
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table table-condensed table-striped">
                     {% for managerinstance in organization.get_managers %}
                         <tr>
                             <td>
@@ -63,6 +63,13 @@
                     <a href="#"><span class="pull-right">{% bootstrap_icon "plus" %}</span></a>
                 </div>
                 <div class="panel-body">
+                    <table class="table table-condensed table-striped">
+                        <tr>
+                            {% for event in organization.event_set.all %}
+                            <td>{{event.name}}</td>
+                            {% endfor %}
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
