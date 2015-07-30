@@ -1,6 +1,9 @@
 {% extends "core/base.html"%}
 {% load i18n %}
 
+{% load guardian_tags %}
+{% get_obj_perms request.user for organization as "org_perms" %}
+
 {% block content %}
 
 <div class="container">
@@ -23,6 +26,41 @@
 {% empty %}
 <p>{% trans "This organization has no events" %}</p>
 {% endfor %}
+
+
+{% if "manage_organization" in org_perms or perms.event.add_organization %}
+    <h2>{% trans "Management" %}</h2>
+    <div class="well">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans "Managers" %}</div>
+                <div class="panel-body">
+                    <ul>
+                    {% for managerinstance in organization.get_managers %}
+                        <li>{{managerinstance.user}}</li>
+                    {% endfor %}
+                    <ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans "Events" %}</div>
+                <div class="panel-body">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans "About" %}</div>
+                <div class="panel-body">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endif %}
 
 </div>
 

@@ -4,6 +4,9 @@ from simple_history.models import HistoricalRecords
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
+from guardian.models import UserObjectPermission
+from django.contrib.contenttypes.models import ContentType
+
 class Organization(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField()
@@ -16,6 +19,10 @@ class Organization(models.Model):
         return self.name
 
 
+    def get_managers(self):
+        type = ContentType.objects.get_for_model(self)
+        return UserObjectPermission.objects.filter(object_pk=self.pk, content_type=type)
+
     class Meta:
             permissions = (
                 ('manage_organization', 'Can manage organization'),
@@ -26,7 +33,7 @@ class Organization(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField()
-    
+
     start = models.DateTimeField()
     end = models.DateTimeField()
 
@@ -35,14 +42,19 @@ class Event(models.Model):
     postalcode = models.CharField(max_length=10)
     city = models.CharField(max_length=64)
     country = models.CharField(max_length=256)
-    
+
     organization = models.ForeignKey(Organization)
-    
+
     history = HistoricalRecords()
 
 
     def __str__(self):
         return self.name
+
+
+    def get_managers(self):
+        type = ContentType.objects.get_for_model(self)
+        return UserObjectPermission.objects.filter(object_pk=self.pk, content_type=type)
 
 
     class Meta:
