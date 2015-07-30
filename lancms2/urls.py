@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^o/(?P<slug>[\w-]+)/$', OrganizationDetailView.as_view(), name='org_detail'),
     url(r'^e/(?P<slug>[\w-]+)/$', EventDetailView.as_view(), name='event_detail'),
 
-    url(r'^createorg/$', OrganizationCreateView.as_view(), name='org_create'),
+    url(r'^a/org/create/$', OrganizationCreateView.as_view(), name='org_create'),
 ]
