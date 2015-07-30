@@ -16,16 +16,19 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from event.views import EventListView, EventDetailView, OrganizationDetailView
+from event.views import EventListView, EventDetailView
+from event.views import OrganizationDetailView, OrganizationCreateView
 
 from core.views import UserDetailView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'accounts/', include('allauth.urls')),
-    url(r'accounts/profile/', UserDetailView.as_view(), name='user_profile'),
+    url(r'accounts/profile/$', UserDetailView.as_view(), name='user_profile'),
 
     url(r'^$', EventListView.as_view(), name='event_list'),
     url(r'^o/(?P<slug>[\w-]+)/$', OrganizationDetailView.as_view(), name='org_detail'),
     url(r'^e/(?P<slug>[\w-]+)/$', EventDetailView.as_view(), name='event_detail'),
+
+    url(r'^createorg/$', OrganizationCreateView.as_view(), name='org_create'),
 ]

@@ -28,7 +28,15 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if request.user.is_staff or request.user.is_superuser %}
-                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Admin" %}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                <li><a href="{% url 'admin:index' %}">{% trans "Django Admin" %}</a></li>
+                {% if perms.event.add_organization %}
+                <li><a href="{% url 'org_create' %}">{% trans "Add organization" %}</a></li>
+                {% endif %}
+                </ul>
+                </li>
                 {% endif %}
                 <li>
                 {% if request.user.is_authenticated %}

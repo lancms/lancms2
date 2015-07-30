@@ -1,7 +1,7 @@
 from django.db import models
 
 from simple_history.models import HistoricalRecords
-
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
 class Organization(models.Model):
@@ -9,6 +9,8 @@ class Organization(models.Model):
     slug = models.SlugField()
     history = HistoricalRecords()
 
+    def get_absolute_url(self):
+        return reverse('org_detail', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.name

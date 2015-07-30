@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+{% load bootstrap3 %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+
+<h1 class="page-header">{{page_header|default:"Organization"}}</h1>
+
+<form class="form" method="post">
+    {% csrf_token %}
+
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{redirect_field_name}}" value="{{redirect_field_value}}" />
+    {% endif %}
+
+    {% bootstrap_form form %}
+
+    {% buttons submit="Submit"  %}
+    {% endbuttons %}
+
+</form>
+
+</div>
+
+{% endblock %}
