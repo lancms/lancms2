@@ -1,4 +1,5 @@
 {% extends "bootstrap3/bootstrap3.html" %}
+{% load i18n %}
 {% load bootstrap3 %}
 
 {% bootstrap_css %}
@@ -29,8 +30,8 @@
                 {% if request.user.is_staff or request.user.is_superuser %}
                 <li><a href="{% url 'admin:index' %}">Admin</a></li>
                 {% endif %}
-                {% if request.user %}
-                <li><a href="#">Signed in as {{request.user}}</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'user_profile' %}">{% trans "Signed in as" %} {{request.user}}</a></li>
                 {% endif %}
             </ul>
         </div>
