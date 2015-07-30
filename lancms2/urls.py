@@ -21,6 +21,7 @@ from event.views import EventListView, EventDetailView, OrganizationDetailView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'accounts/', include('allauth.urls')),
 
     url(r'^$', EventListView.as_view(), name='event_list'),
     url(r'^o/(?P<slug>[\w-]+)/$', OrganizationDetailView.as_view(), name='org_detail'),
