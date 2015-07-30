@@ -3,6 +3,8 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils.decorators import method_decorator
 
+from django.core.exceptions import PermissionDenied
+
 from django.contrib import messages
 
 from django.views.generic.list import ListView
@@ -37,9 +39,11 @@ class OrganizationCreateView(CreateView):
         return context
 
 
-@permission_required('event.add_organization', raise_exception=True)
 def organization_add_manager(request, slug):
     organization = get_object_or_404(Organization, slug=slug)
+
+    if not request.user.has_perm('manage_organization', organization) and not request.user.has_perm('event.add_organization'):
+        raise PermissionDenied
 
     c = {}
     c['organization'] = organization
@@ -50,6 +54,9 @@ def organization_add_manager(request, slug):
         if form.is_valid():
             if form.user_exists():
                 form.save(organization, 'manage_organization')
+                messages.add_message (request, messages.SUCCESS, _("User granted manager permissions")) 
+                # FIXME: Should show a different message if user already
+                # has manager rights. -- mboehn
                 return redirect(organization)
             else:
                 messages.add_message (request, messages.ERROR, _("User doesn't exist")) 
