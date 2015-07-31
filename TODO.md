@@ -9,5 +9,7 @@
 
 * [ ] Add «featured events» (or «only event»)
 
+* [ ] Fix required fields in models (null=False and so on)
+
 ## For later
 * [ ] Move debugging and devel tools out of standard deployments
