@@ -23,7 +23,11 @@ class Organization(models.Model):
 
     history = HistoricalRecords()
 
+    # order is important for Managers
+    # default (used in CBVs ie. is the first Manager)
+    # admin uses default, unless specified in ModelAdmin
     objects = ActiveOrganizationManager()
+    objects_admin = models.Manager()
 
 
     def get_absolute_url(self):
@@ -64,7 +68,11 @@ class Event(models.Model):
 
     history = HistoricalRecords()
 
+    # order is important for Managers
+    # default (used in CBVs ie. is the first Manager)
+    # admin uses default, unless specified in ModelAdmin
     objects = ActiveEventManager()
+    objects_admin = models.Manager()
 
     def __str__(self):
         return self.name
