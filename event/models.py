@@ -7,10 +7,24 @@ from django.contrib.auth.models import User
 from guardian.models import UserObjectPermission
 from django.contrib.contenttypes.models import ContentType
 
+class ActiveOrganizationManager(models.Manager):
+    def get_queryset(self):
+        return super(ActiveOrganizationManager, self).get_queryset().filter(is_active=True)
+
+class ActiveEventManager(models.Manager):
+    def get_queryset(self):
+        return super(ActiveEventManager, self).get_queryset().filter(is_active=True,organization__is_active=True)
+
 class Organization(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField()
+
+    is_active = models.BooleanField(default=True)
+
     history = HistoricalRecords()
+
+    objects = ActiveOrganizationManager()
+
 
     def get_absolute_url(self):
         return reverse('org_detail', kwargs={'slug': self.slug})
@@ -35,6 +49,8 @@ class Event(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField()
 
+    is_active = models.BooleanField(default=True)
+
     start = models.DateTimeField()
     end = models.DateTimeField()
 
@@ -48,6 +64,7 @@ class Event(models.Model):
 
     history = HistoricalRecords()
 
+    objects = ActiveEventManager()
 
     def __str__(self):
         return self.name
