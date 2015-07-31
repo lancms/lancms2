@@ -7,8 +7,7 @@
 * [ ] Check email verification settings and templates
 
 
-
-
+* [ ] Add «featured events» (or «only event»)
 
 ## For later
 * [ ] Move debugging and devel tools out of standard deployments
