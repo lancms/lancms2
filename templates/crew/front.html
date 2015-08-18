@@ -3,40 +3,45 @@
 
 {% block content %}
 <div class="jumbotron">
-<div class="container">
-<h1>{% trans "Crews on" %} {{event.name}}</h1>
-<p><a href="/{{org.name}}/{{event.urlslug}}/" class="btn btn-primary" title="{% trans "Back to" %} {{event.name}}">&laquo; {% trans "Back to" %} {{event.name}}</a>&nbsp;<a href="/{{org.name}}/{{event.urlslug}}/+crews/apply" class="btn btn-success" title="{% trans "Apply for crew" %}">Apply for crew</a></p>
-</div>
+    <div class="container">
+        <h1>{% trans "Crews on" %} {{event.name}}</h1>
+
+        <p><a href="/{{org.name}}/{{event.urlslug}}/" class="btn btn-primary" title="{% trans " Back to" %}
+            {{event.name}}">&laquo; {% trans "Back to" %} {{event.name}}</a>&nbsp;<a
+                    href="/{{org.name}}/{{event.urlslug}}/+crews/apply" class="btn btn-success" title="{% trans " Apply for crew" %}">Apply for crew</a></p>
+    </div>
 </div>
 
 {% if crews %}
 <div class="container">
-	<div class="row">
-		<div class="col-md-9">
-			<div class="panel panel-default">
-				<div class="panel-heading">{% trans "Crews" %}</div>
-				<div class="panel-body">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>{% trans "Name" %}</th>
-								<th>{% trans "Description" %}</th>
-								<th>{% trans "Number of members" %}</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for crew in crews %}
-							<tr>
-								<td><a href="/{{org.name}}/{{event.urlslug}}/+crew/{{crew.name}}" title="{% trans "Show members of" %} {{event.name}}">{{crew.name}}</a></td>
-								<td>{{crew.description}}</td>
-								<td>{{crew.numMembers}}</td>
-							</tr>
-							{% endfor %}
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">{% trans "Crews" %}</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>{% trans "Name" %}</th>
+                            <th>{% trans "Description" %}</th>
+                            <th>{% trans "Number of members" %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for crew in crews %}
+                        <tr>
+                            <td><a href="/{{org.name}}/{{event.urlslug}}/+crew/{{crew.name}}" title="{% trans " Show
+                                   members of" %} {{event.name}}">{{crew.name}}</a></td>
+                            <td>{{crew.description}}</td>
+                            <td>{{crew.numMembers}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endif %}
 
