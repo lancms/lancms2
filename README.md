@@ -1,5 +1,9 @@
 # LANCMS 2
 
+# ARCHIVED PROJECT - NO LONGER A WORK IN PROGRESS
+
+# Old
+
 * Work in progress.
 * Python/Django-based.
 * Developed with PostgreSQL in mind.
